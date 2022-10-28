@@ -1,0 +1,21 @@
+# ninja log v5
+0	68	1666103280714679719	googletest-prefix/src/googletest-stamp/googletest-mkdir	c79fca51a9032bd0
+0	68	1666103280714679719	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-mkdir	c79fca51a9032bd0
+68	5078	1666103285726652522	googletest-prefix/src/googletest-stamp/googletest-download	df51d1db69ad843a
+68	5078	1666103285726652522	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-download	df51d1db69ad843a
+5078	5099	0	googletest-prefix/src/googletest-stamp/googletest-update	aad91033afade178
+5078	5099	0	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-update	aad91033afade178
+5099	5127	1666103285774652262	googletest-prefix/src/googletest-stamp/googletest-patch	84b53efc09ddc44
+5099	5127	1666103285774652262	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-patch	84b53efc09ddc44
+5127	5158	1666103285806652088	googletest-prefix/src/googletest-stamp/googletest-configure	8839d3168383d8f9
+5127	5158	1666103285806652088	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-configure	8839d3168383d8f9
+5158	5183	1666103285830651958	googletest-prefix/src/googletest-stamp/googletest-build	612161ab859e9f15
+5158	5183	1666103285830651958	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-build	612161ab859e9f15
+5183	5202	1666103285850651849	googletest-prefix/src/googletest-stamp/googletest-install	92e9c26374413146
+5183	5202	1666103285850651849	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-install	92e9c26374413146
+5203	5235	1666103285882651675	googletest-prefix/src/googletest-stamp/googletest-test	6a4aafbac7556a29
+5203	5235	1666103285882651675	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-test	6a4aafbac7556a29
+5235	5277	1666103285926651437	CMakeFiles/googletest-complete	7a8b042e77643611
+5235	5277	1666103285926651437	googletest-prefix/src/googletest-stamp/googletest-done	7a8b042e77643611
+5235	5277	1666103285926651437	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/CMakeFiles/googletest-complete	7a8b042e77643611
+5235	5277	1666103285926651437	/home/fabio/projects/sycl-blas/build_manual/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-done	7a8b042e77643611

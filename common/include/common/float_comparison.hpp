@@ -27,6 +27,7 @@
 #define UTILS_FLOAT_COMPARISON_H_
 
 #include <cmath>
+#include <complex>
 #include <iostream>
 
 
@@ -51,19 +52,34 @@ class numeric_limits<cl::sycl::half> {
 
 namespace utils {
 
+//template <typename scalar_t>
+//bool isnan(scalar_t value) noexcept {
+//  return std::isnan(std::abs(value)); // Use abs to deal with complex numbers
+//} //FIXME properly specialize this template
+//
+//template <typename scalar_t>
+//bool isinf(scalar_t value) noexcept {
+//  return std::isinf(std::abs(value)); // Use abs to deal with complex numbers
+//} //FIXME properly specialize this template
+
+//template <typename scalar_t>
+//auto abs(scalar_t value) noexcept -> decltype(std::abs(value)){
+//  return std::abs(value);
+//} //FIXME properly specialize this template
+
+template <typename scalar_t>
+auto abs(scalar_t value) noexcept -> decltype(abs(value)){
+  return abs(value);
+}
+
 template <typename scalar_t>
 bool isnan(scalar_t value) noexcept {
-  return std::isnan(value);
+  return std::isnan(abs(value)); // Use abs to deal with complex numbers
 }
 
 template <typename scalar_t>
 bool isinf(scalar_t value) noexcept {
-  return std::isinf(value);
-}
-
-template <typename scalar_t>
-scalar_t abs(scalar_t value) noexcept {
-  return std::abs(value);
+  return std::isinf(abs(value)); // Use abs to deal with complex numbers
 }
 
 #ifdef BLAS_DATA_TYPE_HALF
@@ -97,11 +113,20 @@ scalar_t clamp_to_limits(scalar_t v) {
   }
 }
 
+template<typename scalar_t>
+struct ReturnType {typedef scalar_t type; };
+
+template<>
+struct ReturnType<sycl_complex<float>> {typedef float type; };
+
+template<>
+struct ReturnType<sycl_complex<double>> {typedef double type; };
+
 /**
  * Indicates the tolerated margin for relative differences
  */
-template <typename scalar_t>
-inline scalar_t getRelativeErrorMargin() {
+template <typename scalar_t, typename ret_type = typename ReturnType<scalar_t>::type>
+inline ret_type getRelativeErrorMargin() {
   /* Measured empirically with gemm. The dimensions of the matrices (even k)
    * don't seem to have an impact on the observed relative differences
    * In the cases where the relative error is relevant (non close to zero),
@@ -120,6 +145,26 @@ inline double getRelativeErrorMargin<double>() {
   return 0.0000000001;  // 10^-10
 }
 
+template <>
+inline float getRelativeErrorMargin<sycl_complex<float>>() {
+  /* Measured empirically with gemm. The dimensions of the matrices (even k) //FIXME Is this still true for complex?
+   * don't seem to have an impact on the observed relative differences
+   * In the cases where the relative error is relevant (non close to zero),
+   * relative differences of up to 10^-12 were observed for double
+   */
+  return static_cast<float>(0.005);
+}
+
+template <>
+inline double getRelativeErrorMargin<sycl_complex<double>>() {
+  /* Measured empirically with gemm. The dimensions of the matrices (even k) //FIXME Is this still true for complex?
+   * don't seem to have an impact on the observed relative differences
+   * In the cases where the relative error is relevant (non close to zero),
+   * relative differences of up to 10^-12 were observed for double
+   */
+  return 0.0000000001;  // 10^-10
+}
+
 #ifdef BLAS_DATA_TYPE_HALF
 
 template <>
@@ -128,12 +173,17 @@ inline cl::sycl::half getRelativeErrorMargin<cl::sycl::half>() {
   return 0.05f;
 }
 #endif
+
+
+
+
+
 /**
  * Indicates the tolerated margin for absolute differences (used in case the
  * scalars are close to 0)
  */
-template <typename scalar_t>
-inline scalar_t getAbsoluteErrorMargin() {
+template <typename scalar_t, typename ret_type = typename ReturnType<scalar_t>::type>
+inline ret_type getAbsoluteErrorMargin() {
   /* Measured empirically with gemm.
    * In the cases where the relative error is irrelevant (close to zero),
    * absolute differences of up to 0.0006 were observed for float
@@ -144,6 +194,24 @@ inline scalar_t getAbsoluteErrorMargin() {
 template <>
 inline double getAbsoluteErrorMargin<double>() {
   /* Measured empirically with gemm.
+   * In the cases where the relative error is irrelevant (close to zero),
+   * absolute differences of up to 10^-12 were observed for double
+   */
+  return 0.0000000001;  // 10^-10
+}
+
+template <>
+inline float getAbsoluteErrorMargin<sycl_complex<float>>() {
+  /* Measured empirically with gemm. FIXME Is this still true for complex?
+   * In the cases where the relative error is irrelevant (close to zero),
+   * absolute differences of up to 0.0006 were observed for float
+   */
+  return 0.001f;
+}
+
+template <>
+    inline double getAbsoluteErrorMargin<sycl_complex<double>>() {
+  /* Measured empirically with gemm. FIXME Is this still true for complex?
    * In the cases where the relative error is irrelevant (close to zero),
    * absolute differences of up to 10^-12 were observed for double
    */
@@ -173,7 +241,7 @@ inline bool almost_equal(scalar_t const& scalar1, scalar_t const& scalar2) {
     return true;
   }
 
-  const scalar_t absolute_diff = utils::abs(scalar1 - scalar2);
+  const auto absolute_diff = utils::abs(scalar1 - scalar2);
 
   // Close to zero, the relative error doesn't work, use absolute error
   if (scalar1 == scalar_t{0} || scalar2 == scalar_t{0} ||

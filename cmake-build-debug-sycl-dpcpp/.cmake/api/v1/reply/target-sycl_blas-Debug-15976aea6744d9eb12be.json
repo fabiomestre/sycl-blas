@@ -1,0 +1,163 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "libsycl_blas.so"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"build_library",
+			"install",
+			"target_link_options",
+			"add_sycl_to_target",
+			"target_compile_options",
+			"add_definitions"
+		],
+		"files" : 
+		[
+			"cmake/CmakeFunctionHelper.cmake",
+			"CMakeLists.txt",
+			"cmake/Modules/FindDPCPP.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 120,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 821,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 165,
+				"parent" : 0
+			},
+			{
+				"command" : 4,
+				"file" : 1,
+				"line" : 139,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 2,
+				"line" : 82,
+				"parent" : 4
+			},
+			{
+				"command" : 5,
+				"file" : 2,
+				"line" : 79,
+				"parent" : 4
+			},
+			{
+				"command" : 6,
+				"file" : 1,
+				"line" : 87,
+				"parent" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "axpy::@746e6b389acb2960dde7"
+		}
+	],
+	"id" : "sycl_blas::@6890427a1f51a3e7e1df",
+	"install" : 
+	{
+		"destinations" : 
+		[
+			{
+				"backtrace" : 3,
+				"path" : "lib"
+			},
+			{
+				"backtrace" : 3,
+				"path" : "lib"
+			}
+		],
+		"prefix" : 
+		{
+			"path" : "/usr/local"
+		}
+	},
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-v",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-fsycl",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-fsycl-targets=spir64_x86_64-unknown-unknown",
+				"role" : "flags"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "sycl_blas",
+	"nameOnDisk" : "libsycl_blas.so",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Object Libraries",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-sycl-dpcpp/src/interface/blas1/CMakeFiles/axpy.dir/__/__/__/generated_src/blas1/axpy/axpy_PolicyHandler_codeplay_policy_float_int_BufferIterator_float_codeplay_policy_BufferIterator_float_codeplay_policy_int.cpp.o",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-sycl-dpcpp/src/interface/blas1/CMakeFiles/axpy.dir/__/__/__/generated_src/blas1/axpy/axpy_PolicyHandler_codeplay_policy_sycl_complex_float_int_BufferIterator_sycl_complex_float_codeplay_policy_BufferIterator_sycl_complex_float_codeplay_policy_int.cpp.o",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-sycl-dpcpp/src/interface/blas1/CMakeFiles/axpy.dir/__/__/__/generated_src/blas1/axpy/axpy_PolicyHandler_codeplay_policy_sycl_complex_double_int_BufferIterator_sycl_complex_double_codeplay_policy_BufferIterator_sycl_complex_double_codeplay_policy_int.cpp.o",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "SHARED_LIBRARY"
+}

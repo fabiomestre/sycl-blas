@@ -1,0 +1,131 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 165,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 172,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 177,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 182,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 183,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libsycl_blas.so.0.1.0"
+			],
+			"targetId" : "sycl_blas::@6890427a1f51a3e7e1df",
+			"targetIndex" : 11,
+			"targetInstallNamelink" : "skip",
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"libsycl_blas.so"
+			],
+			"targetId" : "sycl_blas::@6890427a1f51a3e7e1df",
+			"targetIndex" : 11,
+			"targetInstallNamelink" : "only",
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "sycl_blas",
+			"destination" : "/usr/local",
+			"paths" : 
+			[
+				"include"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "sycl_blas",
+			"destination" : "include",
+			"paths" : 
+			[
+				"external/computecpp-sdk/include/vptr"
+			],
+			"type" : "directory"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/sycl_blas/cmake",
+			"paths" : 
+			[
+				"cmake-build-debug-sycl-dpcpp/cmake/sycl_blas-version.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib/sycl_blas/cmake",
+			"exportName" : "sycl_blas",
+			"exportTargets" : 
+			[
+				{
+					"id" : "sycl_blas::@6890427a1f51a3e7e1df",
+					"index" : 11
+				}
+			],
+			"paths" : 
+			[
+				"CMakeFiles/Export/3da940adc6c1f6ee10f9230fd3a497df/sycl_blas-config.cmake"
+			],
+			"type" : "export"
+		}
+	],
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	}
+}

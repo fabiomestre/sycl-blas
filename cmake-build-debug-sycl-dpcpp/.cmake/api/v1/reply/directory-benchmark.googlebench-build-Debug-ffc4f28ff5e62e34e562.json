@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "benchmark/googlebench-build",
+		"source" : "cmake-build-debug-sycl-dpcpp/benchmark/googlebench-src"
+	}
+}

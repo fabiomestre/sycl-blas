@@ -59,8 +59,21 @@ typename executor_t::policy_t::event_t _axpy(
     increment_t _incx, container_1_t _vy, increment_t _incy) {
   auto vx = make_vector_view(ex, _vx, _incx, _N);
   auto vy = make_vector_view(ex, _vy, _incy, _N);
+//  std::cout << "ALPHA type " << typeid(element_t).name() << " " << _alpha << std::endl;
+//  std::cout << "_VX Type " << typeid(_vx).name() << std::endl;
+//  std::cout << "VX Type " << typeid(vx).name() << std::endl;
+//  std::cout << "_VY Type " << typeid(_vy).name() << std::endl;
+//  std::cout << "VY Type " << typeid(vy).name() << std::endl;
+//  std::cout << "Vx val: " << vx.data_[0] << std::endl;
+//  std::cout << _incx << std::endl;
+//  std::cout << _incy << std::endl;
+
+//  std::cout << vx.eval(0) << std::endl;
+//  std::cout << vy.eval(0) << std::endl;
+
 
   auto scalOp = make_op<ScalarOp, ProductOperator>(_alpha, vx);
+//    auto scalOp = make_op<ScalarOp, ProductOperator>(sycl_complex<float>{1.0f, 0.0f}, vx);
   auto addOp = make_op<BinaryOp, AddOperator>(vy, scalOp);
   auto assignOp = make_op<Assign>(vy, addOp);
   auto ret = ex.execute(assignOp);

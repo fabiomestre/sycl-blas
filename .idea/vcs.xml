@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build_manual/benchmark/googlebench-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build_manual/test/googletest-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cmake-build-debug-sycl-dpcpp/benchmark/googlebench-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cmake-build-debug-sycl-dpcpp/test/googletest-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/computecpp-sdk" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external/py_gen" vcs="Git" />
+  </component>
+</project>

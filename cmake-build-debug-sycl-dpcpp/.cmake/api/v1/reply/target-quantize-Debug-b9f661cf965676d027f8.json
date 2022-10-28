@@ -1,0 +1,259 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "src/quantize/CMakeFiles/quantize.dir/./__/__/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_base.cpp.o"
+		},
+		{
+			"path" : "src/quantize/CMakeFiles/quantize.dir/./__/__/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_sycl_complex_float_.cpp.o"
+		},
+		{
+			"path" : "src/quantize/CMakeFiles/quantize.dir/./__/__/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_sycl_complex_double_.cpp.o"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"generate_quantize",
+			"target_compile_options",
+			"add_sycl_to_target",
+			"add_definitions",
+			"target_compile_definitions",
+			"set_target_compile_def",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"cmake/CmakeFunctionHelper.cmake",
+			"src/quantize/CMakeLists.txt",
+			"cmake/Modules/FindDPCPP.cmake",
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 26,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 774,
+				"parent" : 1
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 783,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 2,
+				"line" : 79,
+				"parent" : 3
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 4,
+				"file" : 3,
+				"line" : 87,
+				"parent" : 5
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 775,
+				"parent" : 1
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 76,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 81,
+				"parent" : 7
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 86,
+				"parent" : 7
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 776,
+				"parent" : 1
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -D__SYCL_DISABLE_NAMESPACE_INLINE__=ON -O3 -Xclang -cl-mad-enable -g -fPIC -fcolor-diagnostics   -Wno-deprecated -O0"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fsycl"
+				},
+				{
+					"backtrace" : 4,
+					"fragment" : "-fsycl-targets=spir64_x86_64-unknown-unknown"
+				},
+				{
+					"fragment" : "-std=c++17"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 6,
+					"define" : "CL_TARGET_OPENCL_VERSION=220"
+				},
+				{
+					"backtrace" : 8,
+					"define" : "DEFAULT_CPU=1"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "GEMM_TALL_SKINNY_SUPPORT=1"
+				},
+				{
+					"backtrace" : 10,
+					"define" : "GEMM_VECTORIZATION_SUPPORT=1"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 11,
+					"path" : "/home/fabio/projects/sycl-blas/src"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/fabio/projects/sycl-blas/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/fabio/projects/sycl-blas/common/include"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/fabio/projects/dpcpp/llvm/build/bin/../include/sycl"
+				},
+				{
+					"backtrace" : 11,
+					"path" : "/home/fabio/projects/sycl-blas/external/computecpp-sdk/include"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					2
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"id" : "quantize::@174926a78a70d65769c1",
+	"name" : "quantize",
+	"paths" : 
+	{
+		"build" : "src/quantize",
+		"source" : "src/quantize"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				3,
+				4
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				5
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-sycl-dpcpp/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_base.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-sycl-dpcpp/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_sycl_complex_float_.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-sycl-dpcpp/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_sycl_complex_double_.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"path" : "src/quantize/quantize_base.cpp.in",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"path" : "src/quantize/quantize.cpp.in",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug-sycl-dpcpp/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_sycl_complex_double_.cpp.rule",
+			"sourceGroupIndex" : 2
+		}
+	],
+	"type" : "OBJECT_LIBRARY"
+}

@@ -1,0 +1,27 @@
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WD654 failed with the following output:
+Change Dir: /home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/fabio/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/223.6160.115/bin/ninja/linux/ninja cmTC_0305b && [1/2] Building CXX object CMakeFiles/cmTC_0305b.dir/src.cxx.o
+FAILED: CMakeFiles/cmTC_0305b.dir/src.cxx.o 
+/home/fabio/projects/dpcpp/llvm/build/bin/clang++ -DHAVE_CXX_FLAG_WD654  -D__SYCL_DISABLE_NAMESPACE_INLINE__=ON -O3 -Xclang -cl-mad-enable  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -wd654 -fPIE -fcolor-diagnostics   -wd654 -MD -MT CMakeFiles/cmTC_0305b.dir/src.cxx.o -MF CMakeFiles/cmTC_0305b.dir/src.cxx.o.d -o CMakeFiles/cmTC_0305b.dir/src.cxx.o -c /home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/CMakeFiles/CMakeTmp/src.cxx
+clang-16: error: unknown argument: '-wd654'
+clang-16: error: unknown argument: '-wd654'
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_COVERAGE failed with the following output:
+Change Dir: /home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/home/fabio/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/223.6160.115/bin/ninja/linux/ninja cmTC_c56f9 && [1/2] Building CXX object CMakeFiles/cmTC_c56f9.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_c56f9
+FAILED: cmTC_c56f9 
+: && /home/fabio/projects/dpcpp/llvm/build/bin/clang++ -D__SYCL_DISABLE_NAMESPACE_INLINE__=ON -O3 -Xclang -cl-mad-enable  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety  --coverage  CMakeFiles/cmTC_c56f9.dir/src.cxx.o -o cmTC_c56f9   && :
+/usr/bin/ld: cannot find /home/fabio/projects/dpcpp/llvm/build/lib/clang/16.0.0/lib/linux/libclang_rt.profile-x86_64.a: No such file or directory
+clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+int main() { return 0; }

@@ -1,0 +1,14 @@
+# Target labels
+ googletest
+# Source files and their labels
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/CMakeFiles/googletest
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/CMakeFiles/googletest.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/CMakeFiles/googletest-complete.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-build.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-configure.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-download.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-install.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-patch.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-test.rule
+/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download/googletest-prefix/src/googletest-stamp/googletest-update.rule

@@ -22,21 +22,22 @@
 # *  @filename CMakeList.txt
 # *
 # **************************************************************************/
-#blas1 
+#blas1
+#FIXME Will re-enable them one by one
 generate_blas_binary_objects(blas1 axpy)
-generate_blas_binary_objects(blas1 asum)
-generate_blas_binary_objects(blas1 copy)
-generate_blas_binary_objects(blas1 dot_return)
-generate_blas_binary_objects(blas1 nrm2)
-generate_blas_binary_objects(blas1 rot)
-generate_blas_binary_objects(blas1 nrm2_return)
-generate_blas_binary_objects(blas1 swap)
+#generate_blas_binary_objects(blas1 asum)
+#generate_blas_binary_objects(blas1 copy)
+#generate_blas_binary_objects(blas1 dot_return)
+#generate_blas_binary_objects(blas1 nrm2)
+#generate_blas_binary_objects(blas1 rot)
+#generate_blas_binary_objects(blas1 nrm2_return)
+#generate_blas_binary_objects(blas1 swap)
 
-generate_blas_unary_objects(blas1 asum_return)
-generate_blas_unary_objects(blas1 iamax_return)
-generate_blas_unary_objects(blas1 iamin_return)
-generate_blas_unary_objects(blas1 scal)
+#generate_blas_unary_objects(blas1 asum_return)
+#generate_blas_unary_objects(blas1 iamax_return)
+#generate_blas_unary_objects(blas1 iamin_return)
+#generate_blas_unary_objects(blas1 scal)
 
-generate_blas_ternary_objects(blas1 dot)
-generate_blas_binary_special_objects(blas1 iamax)
-generate_blas_binary_special_objects(blas1 iamin)
+#generate_blas_ternary_objects(blas1 dot)
+#generate_blas_binary_special_objects(blas1 iamax)
+#generate_blas_binary_special_objects(blas1 iamin)

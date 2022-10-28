@@ -236,6 +236,7 @@ template <typename executor_t, typename container_0_t, typename container_1_t,
 typename executor_t::policy_t::event_t _axpy(
     executor_t &ex, index_t _N, element_t _alpha, container_0_t _vx,
     increment_t _incx, container_1_t _vy, increment_t _incy) {
+//  std::cout << _xv
   return internal::_axpy(ex, _N, _alpha,
                          ex.get_policy_handler().get_buffer(_vx), _incx,
                          ex.get_policy_handler().get_buffer(_vy), _incy);

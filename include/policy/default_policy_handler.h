@@ -65,7 +65,7 @@ class PolicyHandler {
   void wait(first_event_t first_event, next_event_t... next_events);
 
   template <typename element_t>
-  element_t *allocate(size_t num_elements) const;
+  element_t *allocate(int num_elements) const;
 
   template <typename element_t>
   void deallocate(element_t *p) const;
@@ -118,7 +118,7 @@ class PolicyHandler {
 
   template <typename element_t>
   typename policy_t::event_t copy_to_device(
-      const element_t *src, BufferIterator<element_t, policy_t> dst, size_t);
+      const element_t *src, BufferIterator<element_t, policy_t> dst, int);
 
   /*  @brief Copying the data back to device
     @tparam element_t is the type of the data
@@ -129,7 +129,7 @@ class PolicyHandler {
 
   template <typename element_t>
   typename policy_t::event_t copy_to_host(
-      BufferIterator<element_t, policy_t> src, element_t *dst, size_t);
+      BufferIterator<element_t, policy_t> src, element_t *dst, int);
 
   /*  @brief waiting for a sycl::queue.wait()
    */

@@ -1,0 +1,29 @@
+src/quantize/src/quantize/quantize_quantize_PolicyHandler_codeplay_policy_base.cpp.bc: \
+  generated_src/quantize/quantize_PolicyHandler_codeplay_policy_base.cpp \
+  ../include/quantize/quantize.h \
+  ../include/executors/executor.h \
+  ../include/blas_meta.h \
+  ../include/operations/blas1_trees.h \
+  ../include/operations/blas_constants.h \
+  ../include/operations/blas_operators.h \
+  ../include/operations/blas2_trees.h \
+  ../include/operations/blas3_trees.h \
+  ../include/operations/extension/reduction.h \
+  ../include/policy/policy_handler.h \
+  ../include/policy/default_policy_handler.h \
+  ../include/container/blas_iterator.h \
+  ../include/policy/sycl_policy_handler.h \
+  ../include/container/sycl_iterator.h \
+  ../include/policy/sycl_policy.h \
+  ../external/computecpp-sdk/include/vptr/virtual_ptr.hpp \
+  ../src/quantize/quantize.hpp \
+  ../src/executors/executor_sycl.hpp \
+  ../include/executors/kernel_constructor.h \
+  ../src/operations/blas1_trees.hpp \
+  ../src/operations/blas_operators.hpp \
+  ../src/operations/blas_constants.hpp \
+  ../src/views/view_sycl.hpp \
+  ../include/views/view.h \
+  ../src/operations/blas2_trees.hpp \
+  ../src/operations/blas2/gemv.hpp \
+  ../src/operations/blas2/ger.hpp

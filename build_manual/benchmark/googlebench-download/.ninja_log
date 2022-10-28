@@ -1,0 +1,21 @@
+# ninja log v5
+0	53	1666103286310649353	googlebench-prefix/src/googlebench-stamp/googlebench-mkdir	fc20dcb1355da281
+0	53	1666103286310649353	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-mkdir	fc20dcb1355da281
+53	9406	1666103295670598566	googlebench-prefix/src/googlebench-stamp/googlebench-download	7e7bbaf2022d73ee
+53	9406	1666103295670598566	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-download	7e7bbaf2022d73ee
+9406	9419	0	googlebench-prefix/src/googlebench-stamp/googlebench-update	d8efc372b2fb4e7c
+9406	9419	0	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-update	d8efc372b2fb4e7c
+9419	9431	1666103295694598435	googlebench-prefix/src/googlebench-stamp/googlebench-patch	40adcaf7cdca5f19
+9419	9431	1666103295694598435	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-patch	40adcaf7cdca5f19
+9431	9447	1666103295706598370	googlebench-prefix/src/googlebench-stamp/googlebench-configure	51284a9481012f3d
+9431	9447	1666103295706598370	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-configure	51284a9481012f3d
+9447	9468	1666103295726598262	googlebench-prefix/src/googlebench-stamp/googlebench-build	2198cd6a6d215d3d
+9447	9468	1666103295726598262	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-build	2198cd6a6d215d3d
+9468	9501	1666103295758598087	googlebench-prefix/src/googlebench-stamp/googlebench-install	f2f8cf7b77b314f1
+9468	9501	1666103295758598087	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-install	f2f8cf7b77b314f1
+9501	9530	1666103295790597914	googlebench-prefix/src/googlebench-stamp/googlebench-test	c50568bacbbbd86e
+9501	9530	1666103295790597914	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-test	c50568bacbbbd86e
+9530	9559	1666103295822597740	CMakeFiles/googlebench-complete	3d87be0f6be02783
+9530	9559	1666103295822597740	googlebench-prefix/src/googlebench-stamp/googlebench-done	3d87be0f6be02783
+9530	9559	1666103295822597740	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/CMakeFiles/googlebench-complete	3d87be0f6be02783
+9530	9559	1666103295822597740	/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-done	3d87be0f6be02783

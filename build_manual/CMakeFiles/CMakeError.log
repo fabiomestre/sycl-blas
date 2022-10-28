@@ -1,0 +1,27 @@
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_WD654 failed with the following output:
+Change Dir: /home/fabio/projects/sycl-blas/build_manual/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_eca3e && [1/2] Building CXX object CMakeFiles/cmTC_eca3e.dir/src.cxx.o
+FAILED: CMakeFiles/cmTC_eca3e.dir/src.cxx.o 
+/home/fabio/projects/ComputeCpp-experimental-CE-2.11.0-x86_64-linux-gnu/bin/clang++ -DHAVE_CXX_FLAG_WD654  -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -wd654 -fPIE   -wd654 -MD -MT CMakeFiles/cmTC_eca3e.dir/src.cxx.o -MF CMakeFiles/cmTC_eca3e.dir/src.cxx.o.d -o CMakeFiles/cmTC_eca3e.dir/src.cxx.o -c /home/fabio/projects/sycl-blas/build_manual/CMakeFiles/CMakeTmp/src.cxx
+clang-15: error: unknown argument: '-wd654'
+clang-15: error: unknown argument: '-wd654'
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test HAVE_CXX_FLAG_COVERAGE failed with the following output:
+Change Dir: /home/fabio/projects/sycl-blas/build_manual/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_78800 && [1/2] Building CXX object CMakeFiles/cmTC_78800.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_78800
+FAILED: cmTC_78800 
+: && /home/fabio/projects/ComputeCpp-experimental-CE-2.11.0-x86_64-linux-gnu/bin/clang++ -std=c++11  -Wall  -Wextra  -Wshadow  -Wsuggest-override  -pedantic  -pedantic-errors  -Wshorten-64-to-32  -fstrict-aliasing  -Wno-deprecated-declarations  -Wstrict-aliasing  -Wthread-safety  --coverage  CMakeFiles/cmTC_78800.dir/src.cxx.o -o cmTC_78800   && :
+/usr/bin/ld: cannot find /home/fabio/projects/ComputeCpp-experimental-CE-2.11.0-x86_64-linux-gnu/lib/clang/15.0.0/lib/linux/libclang_rt.profile-x86_64.a: No such file or directory
+clang-15: error: linker command failed with exit code 1 (use -v to see invocation)
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+int main() { return 0; }

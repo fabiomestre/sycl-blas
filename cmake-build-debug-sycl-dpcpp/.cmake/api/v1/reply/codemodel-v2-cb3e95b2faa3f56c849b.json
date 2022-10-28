@@ -1,0 +1,497 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						8,
+						13,
+						17
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-6d1d58872b7915ae01aa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						11
+					]
+				},
+				{
+					"build" : "src",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						7
+					],
+					"jsonFile" : "directory-src-Debug-b6cf2213fc5053b67c22.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src"
+				},
+				{
+					"build" : "src/policy",
+					"jsonFile" : "directory-src.policy-Debug-3dc537b654deb593f81c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/policy",
+					"targetIndexes" : 
+					[
+						12
+					]
+				},
+				{
+					"build" : "src/interface",
+					"childIndexes" : 
+					[
+						4,
+						5,
+						6
+					],
+					"jsonFile" : "directory-src.interface-Debug-a88f12ce6dfb18708e23.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/interface"
+				},
+				{
+					"build" : "src/interface/blas1",
+					"jsonFile" : "directory-src.interface.blas1-Debug-bf78cf9bf25013a52ea5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "src/interface/blas1",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "src/interface/blas2",
+					"jsonFile" : "directory-src.interface.blas2-Debug-74821babe4e83bc994de.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "src/interface/blas2"
+				},
+				{
+					"build" : "src/interface/blas3",
+					"jsonFile" : "directory-src.interface.blas3-Debug-53efc1502e2893c842ad.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 3,
+					"projectIndex" : 0,
+					"source" : "src/interface/blas3"
+				},
+				{
+					"build" : "src/quantize",
+					"jsonFile" : "directory-src.quantize-Debug-90fce5a72b9bfbeabf08.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 0,
+					"source" : "src/quantize",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "test",
+					"childIndexes" : 
+					[
+						9,
+						12
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test-Debug-451c0598f41488bb20b9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "test"
+				},
+				{
+					"build" : "test/googletest-build",
+					"childIndexes" : 
+					[
+						10
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test.googletest-build-Debug-f8a0748dd207979e059a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 1,
+					"source" : "cmake-build-debug-sycl-dpcpp/test/googletest-src"
+				},
+				{
+					"build" : "test/googletest-build/googlemock",
+					"childIndexes" : 
+					[
+						11
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test.googletest-build.googlemock-Debug-248830e8e07e58403283.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 9,
+					"projectIndex" : 2,
+					"source" : "cmake-build-debug-sycl-dpcpp/test/googletest-src/googlemock",
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"build" : "test/googletest-build/googletest",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test.googletest-build.googletest-Debug-e01cfde3a12cc4d16a36.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 10,
+					"projectIndex" : 3,
+					"source" : "cmake-build-debug-sycl-dpcpp/test/googletest-src/googletest",
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				},
+				{
+					"build" : "test/unittest",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-test.unittest-Debug-10296b29e76fdc5e0c03.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 0,
+					"source" : "test/unittest",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "benchmark",
+					"childIndexes" : 
+					[
+						14,
+						16
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-benchmark-Debug-b1f9c84cc15063a9b835.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "benchmark"
+				},
+				{
+					"build" : "benchmark/googlebench-build",
+					"childIndexes" : 
+					[
+						15
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-benchmark.googlebench-build-Debug-ffc4f28ff5e62e34e562.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"parentIndex" : 13,
+					"projectIndex" : 4,
+					"source" : "cmake-build-debug-sycl-dpcpp/benchmark/googlebench-src"
+				},
+				{
+					"build" : "benchmark/googlebench-build/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-benchmark.googlebench-build.src-Debug-419865fa30b7bb93d2d5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5.1"
+					},
+					"parentIndex" : 14,
+					"projectIndex" : 4,
+					"source" : "cmake-build-debug-sycl-dpcpp/benchmark/googlebench-src/src",
+					"targetIndexes" : 
+					[
+						1,
+						2
+					]
+				},
+				{
+					"build" : "benchmark/syclblas",
+					"jsonFile" : "directory-benchmark.syclblas-Debug-32006b17a484dd232428.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 13,
+					"projectIndex" : 0,
+					"source" : "benchmark/syclblas"
+				},
+				{
+					"build" : "samples",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-samples-Debug-f7f9ffae588a3f7677b5.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4.3"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "samples",
+					"targetIndexes" : 
+					[
+						9,
+						10
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						4
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						12,
+						13,
+						16,
+						17
+					],
+					"name" : "sycl-blas",
+					"targetIndexes" : 
+					[
+						0,
+						3,
+						8,
+						9,
+						10,
+						11,
+						12
+					]
+				},
+				{
+					"childIndexes" : 
+					[
+						2
+					],
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "googletest-distribution",
+					"parentIndex" : 0
+				},
+				{
+					"childIndexes" : 
+					[
+						3
+					],
+					"directoryIndexes" : 
+					[
+						10
+					],
+					"name" : "gmock",
+					"parentIndex" : 1,
+					"targetIndexes" : 
+					[
+						4,
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						11
+					],
+					"name" : "gtest",
+					"parentIndex" : 2,
+					"targetIndexes" : 
+					[
+						6,
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						14,
+						15
+					],
+					"name" : "benchmark",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 4,
+					"id" : "axpy::@746e6b389acb2960dde7",
+					"jsonFile" : "target-axpy-Debug-cca4ccf1850cd9deb6fb.json",
+					"name" : "axpy",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "benchmark::@768e62aeedd3bb03fdf7",
+					"jsonFile" : "target-benchmark-Debug-b2d75024ecc08d9573e4.json",
+					"name" : "benchmark",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 15,
+					"id" : "benchmark_main::@768e62aeedd3bb03fdf7",
+					"jsonFile" : "target-benchmark_main-Debug-99c763b227037d403710.json",
+					"name" : "benchmark_main",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 12,
+					"id" : "blas1_axpy_test::@37c0c913bdba7e37cb58",
+					"jsonFile" : "target-blas1_axpy_test-Debug-ed8e53c16c11d52d50ee.json",
+					"name" : "blas1_axpy_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "gmock::@bd70e26646f4a8d3f885",
+					"jsonFile" : "target-gmock-Debug-9826beb51b36e4931f0d.json",
+					"name" : "gmock",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 10,
+					"id" : "gmock_main::@bd70e26646f4a8d3f885",
+					"jsonFile" : "target-gmock_main-Debug-5f1dd8ac220473a92158.json",
+					"name" : "gmock_main",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "gtest::@f11877ec772afcdf8aab",
+					"jsonFile" : "target-gtest-Debug-e56480834fd3621055b8.json",
+					"name" : "gtest",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 11,
+					"id" : "gtest_main::@f11877ec772afcdf8aab",
+					"jsonFile" : "target-gtest_main-Debug-90b1e6afa5168f100f0a.json",
+					"name" : "gtest_main",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "quantize::@174926a78a70d65769c1",
+					"jsonFile" : "target-quantize-Debug-b9f661cf965676d027f8.json",
+					"name" : "quantize",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 17,
+					"id" : "sample_gemm::@fd003194bc69d7fb51e8",
+					"jsonFile" : "target-sample_gemm-Debug-a0287c89d219623c0b02.json",
+					"name" : "sample_gemm",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 17,
+					"id" : "sample_gemv::@fd003194bc69d7fb51e8",
+					"jsonFile" : "target-sample_gemv-Debug-5c0d476d3a68055a9ff8.json",
+					"name" : "sample_gemv",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sycl_blas::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sycl_blas-Debug-15976aea6744d9eb12be.json",
+					"name" : "sycl_blas",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "sycl_policy::@af8e8c7e5f89cbd1fb7a",
+					"jsonFile" : "target-sycl_policy-Debug-fbf60397a12ec32bcc1c.json",
+					"name" : "sycl_policy",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp",
+		"source" : "/home/fabio/projects/sycl-blas"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

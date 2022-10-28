@@ -24,14 +24,17 @@
 
 #ifndef SYCL_BLAS_POLICY_HANDLER_CPP
 #define SYCL_BLAS_POLICY_HANDLER_CPP
+#include <sycl_blas.h>
 #include "operations/blas_constants.h"
 // the templated methods
 #include "policy/sycl_policy_handler.hpp"
+#include <blas_meta.h>
+
 namespace blas {
 
 #define INSTANTIATE_TEMPLATE_METHODS(element_t)                                \
   template element_t *PolicyHandler<codeplay_policy>::allocate<element_t>(     \
-      size_t num_elements) const;                                              \
+      int num_elements) const;                                              \
   template void PolicyHandler<codeplay_policy>::deallocate<element_t>(         \
       element_t * p) const;                                                    \
   template BufferIterator<element_t, codeplay_policy>                          \
@@ -52,25 +55,25 @@ namespace blas {
       BufferIterator<element_t, codeplay_policy> buff);                        \
   template typename codeplay_policy::event_t                                   \
   PolicyHandler<codeplay_policy>::copy_to_device<element_t>(                   \
-      const element_t *src, element_t *dst, size_t size);                      \
+      const element_t *src, element_t *dst, int size);                      \
                                                                                \
   template typename codeplay_policy::event_t                                   \
   PolicyHandler<codeplay_policy>::copy_to_device<element_t>(                   \
       const element_t *src, BufferIterator<element_t, codeplay_policy> dst,    \
-      size_t size);                                                            \
+      int size);                                                            \
   template typename codeplay_policy::event_t                                   \
   PolicyHandler<codeplay_policy>::copy_to_host<element_t>(                     \
-      element_t * src, element_t * dst, size_t size);                          \
+      element_t * src, element_t * dst, int size);                          \
                                                                                \
   template typename codeplay_policy::event_t                                   \
   PolicyHandler<codeplay_policy>::fill<element_t>(                             \
       BufferIterator<element_t, codeplay_policy> buff, element_t value,        \
-      size_t size);                                                            \
+      int size);                                                            \
                                                                                \
   template typename codeplay_policy::event_t                                   \
   PolicyHandler<codeplay_policy>::copy_to_host<element_t>(                     \
       BufferIterator<element_t, codeplay_policy> src, element_t * dst,         \
-      size_t size);                                                            \
+      int size);                                                            \
   template ptrdiff_t PolicyHandler<codeplay_policy>::get_offset<element_t>(    \
       const element_t *ptr) const;                                             \
                                                                                \
@@ -87,10 +90,17 @@ INSTANTIATE_TEMPLATE_METHODS(double)
 INSTANTIATE_TEMPLATE_METHODS(cl::sycl::half)
 #endif  // BLAS_DATA_TYPE_HALF
 
+
+
+//INSTANTIATE_TEMPLATE_METHODS(sycl_complex<float>)
+//INSTANTIATE_TEMPLATE_METHODS(sycl_complex<double>)
+INSTANTIATE_TEMPLATE_METHODS(sycl::_V1::ext::oneapi::experimental::complex<float>)
+INSTANTIATE_TEMPLATE_METHODS(sycl::_V1::ext::oneapi::experimental::complex<double>)
+
 #define INSTANTIATE_TEMPLATE_METHODS_SPECIAL(ind, val)                        \
   template IndexValueTuple<ind, val>                                          \
       *PolicyHandler<codeplay_policy>::allocate<IndexValueTuple<ind, val>>(   \
-          size_t num_elements) const;                                         \
+          int num_elements) const;                                         \
   template void                                                               \
       PolicyHandler<codeplay_policy>::deallocate<IndexValueTuple<ind, val>>(  \
           IndexValueTuple<ind, val> * p) const;                               \
@@ -116,22 +126,22 @@ INSTANTIATE_TEMPLATE_METHODS(cl::sycl::half)
   template typename codeplay_policy::event_t                                  \
   PolicyHandler<codeplay_policy>::copy_to_device<IndexValueTuple<ind, val>>(  \
       const IndexValueTuple<ind, val> *src, IndexValueTuple<ind, val> *dst,   \
-      size_t size);                                                           \
+      int size);                                                           \
                                                                               \
   template typename codeplay_policy::event_t                                  \
   PolicyHandler<codeplay_policy>::copy_to_device<IndexValueTuple<ind, val>>(  \
       const IndexValueTuple<ind, val> *src,                                   \
       BufferIterator<IndexValueTuple<ind, val>, codeplay_policy> dst,         \
-      size_t size);                                                           \
+      int size);                                                           \
   template typename codeplay_policy::event_t                                  \
   PolicyHandler<codeplay_policy>::copy_to_host<IndexValueTuple<ind, val>>(    \
       IndexValueTuple<ind, val> * src, IndexValueTuple<ind, val> * dst,       \
-      size_t size);                                                           \
+      int size);                                                           \
                                                                               \
   template typename codeplay_policy::event_t                                  \
   PolicyHandler<codeplay_policy>::copy_to_host<IndexValueTuple<ind, val>>(    \
       BufferIterator<IndexValueTuple<ind, val>, codeplay_policy> src,         \
-      IndexValueTuple<ind, val> * dst, size_t size);                          \
+      IndexValueTuple<ind, val> * dst, int size);                          \
   template ptrdiff_t                                                          \
   PolicyHandler<codeplay_policy>::get_offset<IndexValueTuple<ind, val>>(      \
       const IndexValueTuple<ind, val> *ptr) const;                            \
@@ -166,6 +176,9 @@ INSTANTIATE_TEMPLATE_METHODS_SPECIAL(long long, cl::sycl::half)
       BufferIterator<element_t, codeplay_policy> buff) const;
 
 INSTANTIATE_CONST_TEMPLATE_METHODS(float const)
+//FIXME
+INSTANTIATE_CONST_TEMPLATE_METHODS(sycl_complex<float> const)
+INSTANTIATE_CONST_TEMPLATE_METHODS(sycl_complex<double> const)
 
 #ifdef BLAS_DATA_TYPE_DOUBLE
 INSTANTIATE_CONST_TEMPLATE_METHODS(double const)

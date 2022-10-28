@@ -1,0 +1,64 @@
+Start testing: Oct 18 15:30 BST
+----------------------------------------------------------
+1/1 Testing: blas1_asum_test
+1/1 Test: blas1_asum_test
+Command: "/home/fabio/projects/sycl-blas/build_manual/test/unittest/blas1_asum_test" "--gtest_output=xml:output/"
+Directory: /home/fabio/projects/sycl-blas/build_manual/test/unittest
+"blas1_asum_test" start time: Oct 18 15:30 BST
+Output:
+----------------------------------------------------------
+[==========] Running 16 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 8 tests from Asum/AsumFloat
+[ RUN      ] Asum/AsumFloat.test/size_11__incX_1
+Device vendor: Intel(R) Corporation
+Device name: Intel(R) FPGA Emulation Device
+Device type: accelerator
+[       OK ] Asum/AsumFloat.test/size_11__incX_1 (123 ms)
+[ RUN      ] Asum/AsumFloat.test/size_11__incX_4
+[       OK ] Asum/AsumFloat.test/size_11__incX_4 (0 ms)
+[ RUN      ] Asum/AsumFloat.test/size_65__incX_1
+[       OK ] Asum/AsumFloat.test/size_65__incX_1 (0 ms)
+[ RUN      ] Asum/AsumFloat.test/size_65__incX_4
+[       OK ] Asum/AsumFloat.test/size_65__incX_4 (0 ms)
+[ RUN      ] Asum/AsumFloat.test/size_10000__incX_1
+[       OK ] Asum/AsumFloat.test/size_10000__incX_1 (0 ms)
+[ RUN      ] Asum/AsumFloat.test/size_10000__incX_4
+[       OK ] Asum/AsumFloat.test/size_10000__incX_4 (3 ms)
+[ RUN      ] Asum/AsumFloat.test/size_1002400__incX_1
+[       OK ] Asum/AsumFloat.test/size_1002400__incX_1 (82 ms)
+[ RUN      ] Asum/AsumFloat.test/size_1002400__incX_4
+[       OK ] Asum/AsumFloat.test/size_1002400__incX_4 (351 ms)
+[----------] 8 tests from Asum/AsumFloat (561 ms total)
+
+[----------] 8 tests from Asum/AsumComplex
+[ RUN      ] Asum/AsumComplex.test/size_11__incX_1
+[       OK ] Asum/AsumComplex.test/size_11__incX_1 (0 ms)
+[ RUN      ] Asum/AsumComplex.test/size_11__incX_4
+[       OK ] Asum/AsumComplex.test/size_11__incX_4 (0 ms)
+[ RUN      ] Asum/AsumComplex.test/size_65__incX_1
+[       OK ] Asum/AsumComplex.test/size_65__incX_1 (0 ms)
+[ RUN      ] Asum/AsumComplex.test/size_65__incX_4
+[       OK ] Asum/AsumComplex.test/size_65__incX_4 (0 ms)
+[ RUN      ] Asum/AsumComplex.test/size_10000__incX_1
+[       OK ] Asum/AsumComplex.test/size_10000__incX_1 (2 ms)
+[ RUN      ] Asum/AsumComplex.test/size_10000__incX_4
+[       OK ] Asum/AsumComplex.test/size_10000__incX_4 (9 ms)
+[ RUN      ] Asum/AsumComplex.test/size_1002400__incX_1
+[       OK ] Asum/AsumComplex.test/size_1002400__incX_1 (188 ms)
+[ RUN      ] Asum/AsumComplex.test/size_1002400__incX_4
+[       OK ] Asum/AsumComplex.test/size_1002400__incX_4 (709 ms)
+[----------] 8 tests from Asum/AsumComplex (909 ms total)
+
+[----------] Global test environment tear-down
+[==========] 16 tests from 2 test suites ran. (1471 ms total)
+[  PASSED  ] 16 tests.
+<end of output>
+Test time =   1.49 sec
+----------------------------------------------------------
+Test Passed.
+"blas1_asum_test" end time: Oct 18 15:30 BST
+"blas1_asum_test" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Oct 18 15:30 BST

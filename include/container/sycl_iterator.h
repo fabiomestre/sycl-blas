@@ -218,6 +218,7 @@ get_range_accessor(BufferIterator<scalar_t, codeplay_policy> buff_iterator) {
 template <typename scalar_t, typename index_t>
 inline blas::BufferIterator<scalar_t, codeplay_policy>
 make_sycl_iterator_buffer(scalar_t* data, index_t size) {
+  std::cout << "fewfwefwefwefwefwefweHELLO " /*<< data[0]*/ << std::endl;
   using buff_t = typename blas::codeplay_policy::buffer_t<scalar_t, 1>;
   return blas::BufferIterator<scalar_t, codeplay_policy>{
       buff_t{data, cl::sycl::range<1>(size)}};
@@ -233,6 +234,7 @@ make_sycl_iterator_buffer(scalar_t* data, index_t size) {
 template <typename scalar_t, typename index_t>
 inline BufferIterator<scalar_t, codeplay_policy> make_sycl_iterator_buffer(
     std::vector<scalar_t>& data, index_t size) {
+  std::cout << "fwefwefwefwefwefwefwefweHELLO " /*<< data[0]*/ << std::endl;
   using buff_t = typename blas::codeplay_policy::buffer_t<scalar_t, 1>;
   return blas::BufferIterator<scalar_t, codeplay_policy>{
       buff_t{data.data(), cl::sycl::range<1>(size)}};
@@ -248,6 +250,7 @@ inline BufferIterator<scalar_t, codeplay_policy> make_sycl_iterator_buffer(
 template <typename scalar_t, typename index_t>
 inline blas::BufferIterator<scalar_t, codeplay_policy>
 make_sycl_iterator_buffer(index_t size) {
+  std::cout << "I'm inside make_sycl_iterator_buffer" << std::endl;
   using buff_t = typename blas::codeplay_policy::buffer_t<scalar_t, 1>;
   return blas::BufferIterator<scalar_t, codeplay_policy>{
       buff_t{cl::sycl::range<1>(size)}};

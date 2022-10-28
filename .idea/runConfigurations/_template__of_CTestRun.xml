@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="CTestRunConfiguration" factoryName="CTestRun" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug-SYCL-ComputeCPP" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_MODE="PATTERN">
+    <envs>
+      <env name="LD_LIBRARY_PATH" value="$PROJECT_DIR$/../dpcpp/llvm/build/lib:/opt/intel/oneapi/vpl/2022.2.0/lib:/opt/intel/oneapi/tbb/2021.7.0/env/../lib/intel64/gcc4.8:/opt/intel/oneapi/mpi/2021.7.0//libfabric/lib:/opt/intel/oneapi/mpi/2021.7.0//lib/release:/opt/intel/oneapi/mpi/2021.7.0//lib:/opt/intel/oneapi/mkl/2022.2.0/lib/intel64:/opt/intel/oneapi/ipp/2021.6.1/lib/intel64:/opt/intel/oneapi/ippcp/2021.6.1/lib/intel64:/opt/intel/oneapi/ipp/2021.6.1/lib/intel64:/opt/intel/oneapi/dnnl/2022.2.0/cpu_dpcpp_gpu_dpcpp/lib:/opt/intel/oneapi/debugger/2021.7.0/gdb/intel64/lib:/opt/intel/oneapi/debugger/2021.7.0/libipt/intel64/lib:/opt/intel/oneapi/debugger/2021.7.0/dep/lib:/opt/intel/oneapi/dal/2021.7.0/lib/intel64:/opt/intel/oneapi/compiler/2022.2.0/linux/lib:/opt/intel/oneapi/compiler/2022.2.0/linux/lib/x64:/opt/intel/oneapi/compiler/2022.2.0/linux/lib/oclfpga/host/linux64/lib:/opt/intel/oneapi/compiler/2022.2.0/linux/compiler/lib/intel64_lin:/opt/intel/oneapi/ccl/2021.7.0/lib/cpu_gpu_dpcpp " />
+    </envs>
+    <method v="2">
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      <option name="BeforeTestRunTask" enabled="true" />
+    </method>
+  </configuration>
+</component>

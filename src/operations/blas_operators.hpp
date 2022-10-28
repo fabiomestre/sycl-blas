@@ -33,9 +33,12 @@
 #include <vector>
 
 #include <CL/sycl.hpp>
+#include <executors/kernel_constructor.hpp>
 
 #include "operations/blas_constants.hpp"
 #include "operations/blas_operators.h"
+#include <sycl/ext/oneapi/experimental/builtins.hpp>
+
 
 namespace blas {
 struct Operators {};
@@ -124,8 +127,28 @@ struct AbsoluteValue {
   static SYCL_BLAS_INLINE value_t eval(
       const value_t &val,
       typename std::enable_if<!is_floating_point<value_t>::value>::type * = 0) {
-    return cl::sycl::abs(val);
+    //FIXME This is wrong atm. Needs to be changed to not use if constexpr. Return type needs to be specialized as well!
+    if constexpr (std::is_same_v<value_t, sycl_complex<float>> || std::is_same_v<value_t, sycl_complex<double>>) {
+      return abs(val);
+    }
+    else {
+      return cl::sycl::abs(val);
+    }
   }
+
+  template <typename value_t>
+  static SYCL_BLAS_INLINE value_t eval(
+      const std::complex<value_t> &val,
+      typename std::enable_if<!is_floating_point<value_t>::value>::type * = 0) {
+    //FIXME This is wrong atm. Needs to be changed to not use if constexpr. Return type needs to be specialized as well!
+    if constexpr (std::is_same_v<value_t, sycl_complex<float>> || std::is_same_v<value_t, sycl_complex<double>>) {
+      return abs(val);
+    }
+    else {
+      return cl::sycl::abs(val);
+    }
+  }
+
 
   template <typename value_t>
   static SYCL_BLAS_INLINE value_t
@@ -186,7 +209,13 @@ struct NegationOperator : public Operators {
 struct SqrtOperator : public Operators {
   template <typename rhs_t>
   static SYCL_BLAS_INLINE rhs_t eval(const rhs_t r) {
-    return (cl::sycl::sqrt(r));
+
+    if constexpr (std::is_same_v<sycl_complex<float>, rhs_t> || std::is_same_v<sycl_complex<double>, rhs_t> ) {
+      sqrt(r);
+    }
+    else {
+      return (cl::sycl::sqrt(r));
+    }
   }
 };
 
@@ -212,6 +241,8 @@ struct AddOperator : public Operators {
   template <typename lhs_t, typename rhs_t>
   static SYCL_BLAS_INLINE typename StripASP<rhs_t>::type eval(const lhs_t &l,
                                                               const rhs_t &r) {
+
+    sycl::ext::oneapi::experimental::printf("AddOperator %f %f\n", l, r);
     return (l + r);
   }
 
@@ -231,6 +262,11 @@ struct ProductOperator : public Operators {
   template <typename lhs_t, typename rhs_t>
   static SYCL_BLAS_INLINE typename StripASP<rhs_t>::type eval(const lhs_t &l,
                                                               const rhs_t &r) {
+
+//    sycl::ext::oneapi::experimental::printf("Type of l: %s\n", typeid(l).name());
+//    sycl::ext::oneapi::experimental::printf("Type of r: %s\n", typeid(r).name());
+    sycl::ext::oneapi::experimental::printf("ProductOperator %f %f\n", l, r);
+
     return (l * r);
   }
 

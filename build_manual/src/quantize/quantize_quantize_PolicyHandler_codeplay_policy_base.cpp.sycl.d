@@ -1,0 +1,29 @@
+src/quantize/quantize_quantize_PolicyHandler_codeplay_policy_base.cpp.bc: \
+  /home/fabio/projects/sycl-blas/build_manual/generated_src/quantize/quantize_PolicyHandler_codeplay_policy_base.cpp \
+  /home/fabio/projects/sycl-blas/include/quantize/quantize.h \
+  /home/fabio/projects/sycl-blas/include/executors/executor.h \
+  /home/fabio/projects/sycl-blas/include/blas_meta.h \
+  /home/fabio/projects/sycl-blas/include/operations/blas1_trees.h \
+  /home/fabio/projects/sycl-blas/include/operations/blas_constants.h \
+  /home/fabio/projects/sycl-blas/include/operations/blas_operators.h \
+  /home/fabio/projects/sycl-blas/include/operations/blas2_trees.h \
+  /home/fabio/projects/sycl-blas/include/operations/blas3_trees.h \
+  /home/fabio/projects/sycl-blas/include/operations/extension/reduction.h \
+  /home/fabio/projects/sycl-blas/include/policy/policy_handler.h \
+  /home/fabio/projects/sycl-blas/include/policy/default_policy_handler.h \
+  /home/fabio/projects/sycl-blas/include/container/blas_iterator.h \
+  /home/fabio/projects/sycl-blas/include/policy/sycl_policy_handler.h \
+  /home/fabio/projects/sycl-blas/include/container/sycl_iterator.h \
+  /home/fabio/projects/sycl-blas/include/policy/sycl_policy.h \
+  /home/fabio/projects/sycl-blas/external/computecpp-sdk/include/vptr/virtual_ptr.hpp \
+  /home/fabio/projects/sycl-blas/src/quantize/quantize.hpp \
+  /home/fabio/projects/sycl-blas/src/executors/executor_sycl.hpp \
+  /home/fabio/projects/sycl-blas/include/executors/kernel_constructor.h \
+  /home/fabio/projects/sycl-blas/src/operations/blas1_trees.hpp \
+  /home/fabio/projects/sycl-blas/src/operations/blas_operators.hpp \
+  /home/fabio/projects/sycl-blas/src/operations/blas_constants.hpp \
+  /home/fabio/projects/sycl-blas/src/views/view_sycl.hpp \
+  /home/fabio/projects/sycl-blas/include/views/view.h \
+  /home/fabio/projects/sycl-blas/src/operations/blas2_trees.hpp \
+  /home/fabio/projects/sycl-blas/src/operations/blas2/gemv.hpp \
+  /home/fabio/projects/sycl-blas/src/operations/blas2/ger.hpp

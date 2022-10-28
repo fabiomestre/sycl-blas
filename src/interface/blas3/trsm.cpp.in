@@ -30,6 +30,7 @@
 #include "operations/blas_constants.hpp"
 #include "policy/sycl_policy_handler.hpp"
 #include "views/view_sycl.hpp"
+#include "sycl_blas.h"
 
 namespace blas {
 namespace internal {

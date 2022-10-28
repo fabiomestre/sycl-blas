@@ -1,0 +1,3 @@
+/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/CMakeFiles/googlebench.dir
+/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/CMakeFiles/edit_cache.dir
+/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/CMakeFiles/rebuild_cache.dir

@@ -252,6 +252,105 @@ struct constant<cl::sycl::half, const_val::collapse>
     : constant<float, const_val::collapse> {};
 #endif  // BLAS_DATA_TYPE_HALF
 
+/* TODO This is hacked in. Needs to be changes to specialize all subtypes of complexes in one go */
+template <>
+struct constant<sycl_complex<float>, const_val::zero>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<float> value() {
+    return sycl_complex<float>{static_cast<float>(const_val::zero), static_cast<float>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<float>, const_val::one>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<float> value() {
+    return sycl_complex<float>{static_cast<float>(const_val::one), static_cast<float>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<float>, const_val::m_one>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<float> value() {
+    return sycl_complex<float>{static_cast<float>(const_val::m_one), static_cast<float>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<float>, const_val::two>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<float> value() {
+    return sycl_complex<float>{static_cast<float>(const_val::two), static_cast<float>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<float>, const_val::m_two>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<float> value() {
+    return sycl_complex<float>{static_cast<float>(const_val::m_two), static_cast<float>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<float>, const_val::max>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<float> value() {
+    return sycl_complex<float>{std::numeric_limits<std::complex<float>>::max()};
+  }
+};
+
+template <>
+struct constant<sycl_complex<float>, const_val::min>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<float> value() {
+    return sycl_complex<float>{std::numeric_limits<std::complex<float>>::min()};
+  }
+};
+
+template <>
+struct constant<sycl_complex<double>, const_val::zero>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<double> value() {
+    return sycl_complex<float>{static_cast<double>(const_val::zero), static_cast<double>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<double>, const_val::one>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<double> value() {
+    return sycl_complex<double>{static_cast<double>(const_val::one), static_cast<double>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<double>, const_val::m_one>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<double> value() {
+    return sycl_complex<double>{static_cast<double>(const_val::m_one), static_cast<double>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<double>, const_val::two>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<double> value() {
+    return sycl_complex<double>{static_cast<double>(const_val::two), static_cast<double>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<double>, const_val::m_two>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<double> value() {
+    return sycl_complex<double>{static_cast<double>(const_val::m_two), static_cast<double>(const_val::zero)};
+  }
+};
+
+template <>
+struct constant<sycl_complex<double>, const_val::max>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<double> value() {
+    return sycl_complex<double>{std::numeric_limits<std::complex<double>>::max()};
+  }
+};
+
+template <>
+struct constant<sycl_complex<double>, const_val::min>{
+  constexpr static SYCL_BLAS_INLINE sycl_complex<double> value() {
+    return sycl_complex<double>{std::numeric_limits<std::complex<double>>::min()};
+  }
+};
+
 template <typename iv_type, const_val IndexIndicator, const_val ValueIndicator>
 struct constant_pair {
   constexpr static SYCL_BLAS_INLINE iv_type value() {

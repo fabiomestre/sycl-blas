@@ -119,10 +119,30 @@ inline cl::sycl::queue make_queue() {
  */
 template <typename scalar_t>
 static inline scalar_t random_scalar(scalar_t rangeMin, scalar_t rangeMax) {
+  scalar_t generated_scalar;
   static std::random_device rd;
   static std::default_random_engine gen(rd());
-  std::uniform_real_distribution<scalar_t> dis(rangeMin, rangeMax);
-  return dis(gen);
+
+  //FIXME Find more elegant way of doing this. Also look into overflows since complex is bigger than float
+  static std::random_device rd2;
+  static std::default_random_engine gen2(rd2());
+  if constexpr (std::is_same<scalar_t, sycl_complex<float>>::value) {
+    std::uniform_real_distribution<float> dis(rangeMin.real(), rangeMax.real());
+    std::uniform_real_distribution<float> dis2(rangeMin.imag(), rangeMax.imag());
+    generated_scalar = sycl_complex<float>(dis(gen), dis2(gen));
+  }
+  else if constexpr(std::is_same<scalar_t, sycl_complex<float>>::value) {
+    std::uniform_real_distribution<double> dis(rangeMin.real(), rangeMax.real());
+    std::uniform_real_distribution<double> dis2(rangeMin.imag(), rangeMax.imag());
+    generated_scalar = sycl_complex<double>(dis(gen), dis2(gen));
+
+  }else {
+    std::uniform_real_distribution<scalar_t> dis(rangeMin, rangeMax);
+    generated_scalar = dis(gen);
+  }
+
+  return generated_scalar;
+//  return dis(gen);
 }
 
 /**
@@ -147,7 +167,13 @@ static inline void fill_random_with_range(std::vector<scalar_t> &vec,
  */
 template <typename scalar_t>
 static inline void fill_random(std::vector<scalar_t> &vec) {
-  fill_random_with_range(vec, scalar_t{-2}, scalar_t{5});
+  if constexpr (std::is_same<scalar_t, sycl_complex<float>>::value || std::is_same<scalar_t, sycl_complex<double>>::value){
+    fill_random_with_range(vec, scalar_t{-2, -2}, scalar_t{5, -5});
+
+  }
+  else {
+    fill_random_with_range(vec, scalar_t{-2}, scalar_t{5});
+  }
 }
 
 /**
@@ -189,41 +215,89 @@ static inline void fill_trsm_matrix(std::vector<scalar_t> &A, size_t k,
 }
 
 /**
+ * @brief Helper class for dumping arguments to a stream, in a format compatible
+ * with google test test names.
+ *
+ * @tparam T is the argument type to dump to the stream.
+ * @tparam Enable is a helper for partial template specialization.
+ */
+template <class T, typename Enable = void>
+struct dump_arg_helper {
+  /** Dump the argument to the stream.
+   *
+   * @param ss Output stream
+   * @param arg Argument to format
+   **/
+  inline void operator()(std::ostream &ss, T arg) { ss << arg; }
+};
+
+/** Specialization of dump_arg_helper for float and double. NB this is not a
+ *  specialization for half. std::is_floating_point<cl::sycl::half>::value will
+ *  return false.
+ *
+ *  @tparam StdFloat A standard floating point type.
+ **/
+template <class StdFloat>
+struct dump_arg_helper<
+    StdFloat,
+    typename std::enable_if<std::is_floating_point<StdFloat>::value>::type> {
+  /**
+   * @brief Dump an argument to a stream.
+   * Format floating point numbers for GTest. A test name cannot contain
+   * "-" nor "." so they are replaced with "m" and "p" respectively. The
+   * fractional part is ignored if null otherwise it is printed with 2 digits.
+   *
+   * @param ss Output stream
+   * @param f Floating point number to format
+   */
+  inline void operator()(std::ostream &ss, StdFloat f) {
+    static_assert(!std::is_same<StdFloat, cl::sycl::half>::value,
+                  "std library functions will not work with half.");
+    if (std::isnan(f)) {
+      ss << "nan";
+      return;
+    }
+    if (f < 0) {
+      ss << "m";
+      f = std::fabs(f);
+    }
+    StdFloat int_part;
+    StdFloat frac_part = std::modf(f, &int_part);
+    ss << int_part;
+    if (frac_part > 0) {
+      ss << "p" << (int)(frac_part * 100);
+    }
+  }
+};
+
+/** Specialization of dump_arg_helper for cl::sycl::half.
+ *  This is required since half will not work with standard library functions.
+ **/
+template <>
+struct dump_arg_helper<cl::sycl::half> {
+  inline void operator()(std::ostream &ss, cl::sycl::half f) {
+    dump_arg_helper<float>{}(ss, f);
+  }
+};
+
+template <>
+struct dump_arg_helper<sycl_complex<float>> {
+  inline void operator()(std::ostream &ss, sycl_complex<float> f) {
+    dump_arg_helper<float>{}(ss, f.real()); // FIXME
+  }
+};
+
+
+/**
  * @brief Dump an argument to a stream.
  *
+ * @tparam T is the type of the argument to format.
  * @param ss Output stream
  * @param arg Argument to format
  */
 template <class T>
 inline void dump_arg(std::ostream &ss, T arg) {
-  ss << arg;
-}
-
-/**
- * @brief Dump an argument to a stream.
- * Format floating point numbers for GTest. A test name cannot contain
- * "-" nor "." so they are replaced with "m" and "p" respectively. The
- * fractional part is ignored if null otherwise it is printed with 2 digits.
- *
- * @param ss Output stream
- * @param f Floating point number to format
- */
-template <>
-inline void dump_arg<float>(std::ostream &ss, float f) {
-  if (std::isnan(f)) {
-    ss << "nan";
-    return;
-  }
-  if (f < 0) {
-    ss << "m";
-    f = std::fabs(f);
-  }
-  float int_part;
-  float frac_part = modff(f, &int_part);
-  ss << int_part;
-  if (frac_part > 0) {
-    ss << "p" << (int)(frac_part * 100);
-  }
+  dump_arg_helper<T>{}(ss, arg);
 }
 
 /**

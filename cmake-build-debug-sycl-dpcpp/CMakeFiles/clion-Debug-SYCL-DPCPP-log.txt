@@ -1,0 +1,50 @@
+/home/fabio/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/223.6160.115/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/fabio/.local/share/JetBrains/Toolbox/apps/CLion/ch-1/223.6160.115/bin/ninja/linux/ninja -DCMAKE_C_COMPILER=/home/fabio/projects/dpcpp/llvm/build/bin/clang -DCMAKE_CXX_COMPILER=/home/fabio/projects/dpcpp/llvm/build/bin/clang++ -DSYCL_COMPILER=dpcpp -DBLAS_ENABLE_CONST_INPUT=OFF -DBLAS_ENABLE_EXTENSIONS=OFF -G Ninja -S /home/fabio/projects/sycl-blas -B /home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp
+-- DEFAULT_CPU is chosen as a backend platform
+-- DEFAULT_CPU is chosen as a backend platform
+-- Using SYCL implementation: dpcpp
+-- Adding DEFAULT_CPU backend to target sycl_policy
+-- Tall and skinny Gemm support enabled for target sycl_policy
+-- Gemm vectorization support enabled for target sycl_policy
+-- Adding DEFAULT_CPU backend to target axpy
+-- Tall and skinny Gemm support enabled for target axpy
+-- Gemm vectorization support enabled for target axpy
+-- Adding SYCL to target axpy
+-- Adding DEFAULT_CPU backend to target quantize
+-- Tall and skinny Gemm support enabled for target quantize
+-- Gemm vectorization support enabled for target quantize
+-- Adding SYCL to target quantize
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/test/googletest-download
+[1/7] Performing update step for 'googletest'
+[2/7] No patch step for 'googletest'
+[3/7] No configure step for 'googletest'
+[4/7] No build step for 'googletest'
+[5/7] No install step for 'googletest'
+[6/7] No test step for 'googletest'
+[7/7] Completed 'googletest'
+-- Created google test blas1_axpy_test
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp/benchmark/googlebench-download
+[1/7] Performing update step for 'googlebench'
+[2/7] No patch step for 'googlebench'
+[3/7] No configure step for 'googlebench'
+[4/7] No build step for 'googlebench'
+[5/7] No install step for 'googlebench'
+[6/7] No test step for 'googlebench'
+[7/7] Completed 'googlebench'
+-- Failed to find LLVM FileCheck
+-- git version: v1.6.1 normalized to 1.6.1
+-- Version: 1.6.1
+-- Performing Test HAVE_THREAD_SAFETY_ATTRIBUTES -- failed to compile
+-- Performing Test HAVE_STD_REGEX -- success
+-- Performing Test HAVE_GNU_POSIX_REGEX -- failed to compile
+-- Performing Test HAVE_POSIX_REGEX -- success
+-- Performing Test HAVE_STEADY_CLOCK -- success
+-- DEFAULT_CPU is chosen as a backend platform
+-- DEFAULT_CPU is chosen as a backend platform
+-- Using SYCL implementation: dpcpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/fabio/projects/sycl-blas/cmake-build-debug-sycl-dpcpp

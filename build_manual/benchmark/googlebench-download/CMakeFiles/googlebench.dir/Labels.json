@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/CMakeFiles/googlebench"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/CMakeFiles/googlebench.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/CMakeFiles/googlebench-complete.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-build.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-configure.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-download.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-install.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-mkdir.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-patch.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-test.rule"
+		},
+		{
+			"file" : "/home/fabio/projects/sycl-blas/build_manual/benchmark/googlebench-download/googlebench-prefix/src/googlebench-stamp/googlebench-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googlebench"
+		],
+		"name" : "googlebench"
+	}
+}

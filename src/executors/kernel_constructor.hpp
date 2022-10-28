@@ -246,7 +246,7 @@ static SYCL_BLAS_INLINE cl::sycl::event execute_tree(queue_t q_,
           gridConfiguration,
           ExpressionTreeFunctor<using_local_memory, expression_tree_t,
                                 decltype(scratch), value_t>(scratch, t));
-    };
+      };
 
     ev = q_.submit(cg1);
     return ev;

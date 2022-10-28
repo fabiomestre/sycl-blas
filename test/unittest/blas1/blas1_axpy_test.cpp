@@ -30,6 +30,7 @@ using combination_t = std::tuple<int, scalar_t, int, int>;
 
 template <typename scalar_t>
 void run_test(const combination_t<scalar_t> combi) {
+
   int size;
   scalar_t alpha;
   int incX;
@@ -39,16 +40,20 @@ void run_test(const combination_t<scalar_t> combi) {
   using data_t = utils::data_storage_t<scalar_t>;
 
   // Input vector
-  std::vector<data_t> x_v(size * incX);
-  fill_random(x_v);
+//  std::vector<data_t> x_v(size * incX);
+//  fill_random(x_v);
+    std::vector<data_t> x_v{data_t{1.0}}; //FIXME
 
   // Output vector
-  std::vector<data_t> y_v(size * incY, 10.0);
-  std::vector<data_t> y_cpu_v(size * incY, 10.0);
+//  std::vector<data_t> y_v(size * incY, 10.0);
+//  std::vector<data_t> y_cpu_v(size * incY, 10.0);
+  std::vector<data_t> y_v(size * incY, 1.0); //FIXME
+  std::vector<data_t> y_cpu_v(size * incY, 1.0); //FIXME
 
   // Reference implementation
   reference_blas::axpy(size, static_cast<data_t>(alpha), x_v.data(), incX,
                        y_cpu_v.data(), incY);
+
 
   // SYCL implementation
   auto q = make_queue();
@@ -57,6 +62,8 @@ void run_test(const combination_t<scalar_t> combi) {
   // Iterators
   auto gpu_x_v = utils::make_quantized_buffer<scalar_t>(ex, x_v);
   auto gpu_y_v = utils::make_quantized_buffer<scalar_t>(ex, y_v);
+
+  std::cout << typeid(gpu_x_v).name() << std::endl;
 
   _axpy(ex, size, alpha, gpu_x_v, incX, gpu_y_v, incY);
   auto event = utils::quantized_copy_to_host<scalar_t>(ex, gpu_y_v, y_v);
@@ -76,10 +83,15 @@ const auto combi =
                        ::testing::Values(1, 3)                    // incY
     );
 #else
-const auto combi = ::testing::Combine(::testing::Values(11, 1002),  // size
-                                      ::testing::Values(0.0, 1.5),  // alpha
-                                      ::testing::Values(1, 4),      // incX
-                                      ::testing::Values(1, 3)       // incY
+//const auto combi = ::testing::Combine(::testing::Values(11, 1002),  // size
+//                                      ::testing::Values(0.0, 1.5),  // alpha
+//                                      ::testing::Values(1, 4),      // incX
+//                                      ::testing::Values(1, 3)       // incY
+//);
+const auto combi = ::testing::Combine(::testing::Values(1),  // size
+                                      ::testing::Values(1),  // alpha
+                                      ::testing::Values(1),      // incX
+                                      ::testing::Values(1)       // incY
 );
 #endif
 

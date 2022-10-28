@@ -36,6 +36,9 @@ if(DOUBLE_SUPPORT)
   endif()
 endif()
 
+list(APPEND BLAS_DATA_TYPES "sycl_complex<float>")
+list(APPEND BLAS_DATA_TYPES "sycl_complex<double>")
+
 if(NOT ("float" IN_LIST BLAS_DATA_TYPES))
   message(FATAL_ERROR "float must be specified in BLAS_DATA_TYPES")
 endif()

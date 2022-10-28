@@ -85,6 +85,9 @@ option(GEMM_TALL_SKINNY_SUPPORT "Whether to enable tall and skinny Gemm" ON)
 option(GEMM_VECTORIZATION_SUPPORT "Whether to enable vectorization in Gemm kernels" ON)
 
 add_definitions(-DCL_TARGET_OPENCL_VERSION=220)
+add_definitions(-Wno-deprecated -O0) #FIXME Remove this later. Just added to get less warnings while working
+set (CMAKE_SHARED_LINKER_FLAGS "-v")
+
 
 set(CBLAS_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external/cblas/include)
 set(COMPUTECPP_SDK_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external/computecpp-sdk/include)

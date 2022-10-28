@@ -90,8 +90,8 @@ struct DetectScalar<cl::sycl::half> {
  * @brief See Detect Scalar.
  */
 template <>
-struct DetectScalar<std::complex<float>> {
-  using element_t = std::complex<float>;
+struct DetectScalar<sycl_complex<float>> {
+  using element_t = sycl_complex<float>;
   static element_t get_scalar(element_t &scalar) { return scalar; }
 };
 
@@ -99,8 +99,8 @@ struct DetectScalar<std::complex<float>> {
  * @brief See Detect Scalar.
  */
 template <>
-struct DetectScalar<std::complex<double>> {
-  using element_t = std::complex<double>;
+struct DetectScalar<sycl_complex<double>> {
+  using element_t = sycl_complex<double>;
   static element_t get_scalar(element_t &scalar) { return scalar; }
 };
 
@@ -178,6 +178,7 @@ SYCL_BLAS_INLINE bool Assign<lhs_t, rhs_t>::valid_thread(
 template <typename lhs_t, typename rhs_t>
 SYCL_BLAS_INLINE typename Assign<lhs_t, rhs_t>::value_t
 Assign<lhs_t, rhs_t>::eval(typename Assign<lhs_t, rhs_t>::index_t i) {
+
   auto val = lhs_.eval(i) = rhs_.eval(i);
   return val;
 }

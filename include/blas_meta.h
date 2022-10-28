@@ -26,8 +26,20 @@
 #ifndef SYCL_BLAS_META_H
 #define SYCL_BLAS_META_H
 
+#include <CL/sycl.hpp>
 #include <type_traits>
 #include <utility>
+
+//TODO Enable complexes only when using dpcpp
+#ifndef SYCL_EXT_ONEAPI_COMPLEX
+#define SYCL_EXT_ONEAPI_COMPLEX 1
+#endif
+
+#include <sycl/ext/oneapi/experimental/sycl_complex.hpp>
+
+template<class T>
+using sycl_complex = cl::sycl::ext::oneapi::experimental::complex<T>;
+
 
 namespace blas {
 

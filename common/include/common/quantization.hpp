@@ -42,7 +42,8 @@ namespace internal {
  * @tparam scalar_t Data type
  */
 template <typename scalar_t>
-struct DataStorage {
+struct DataStorage
+{
   using type = float;
 };
 
@@ -52,6 +53,21 @@ struct DataStorage {
 template <>
 struct DataStorage<double> {
   using type = double;
+};
+
+/** FIXME
+ * @brief complex<float> can be stored as itself because it's supported natively
+ */
+template <>
+struct DataStorage<sycl_complex<float>> {
+  using type = sycl_complex<float>;
+};
+/** FIXME
+ * @brief complex<double> can be stored as itself because it's supported natively
+ */
+template <>
+struct DataStorage<sycl_complex<double>> {
+  using type = sycl_complex<double>;
 };
 
 }  // namespace internal
@@ -94,7 +110,7 @@ struct MakeQuantizedBuffer {
                                            input_vec.size());
     auto gpu_x_v = blas::make_sycl_iterator_buffer<scalar_t>(
         static_cast<int>(input_vec.size()));
-    blas::_quantize(ex, data_gpu_x_v, gpu_x_v);
+    blas::_quantize(ex, data_gpu_x_v, gpu_x_v); //FIXME
     return gpu_x_v;
   }
 
@@ -105,7 +121,7 @@ struct MakeQuantizedBuffer {
     ex.get_policy_handler().copy_to_device(&input_scalar, data_gpu_x_v, 1);
     auto gpu_x_v =
         blas::make_sycl_iterator_buffer<scalar_t>(static_cast<int>(1));
-    blas::_quantize(ex, data_gpu_x_v, gpu_x_v);
+    blas::_quantize(ex, data_gpu_x_v, gpu_x_v); //FIXME
     return gpu_x_v;
   }
 };
@@ -126,6 +142,7 @@ struct MakeQuantizedBufferNoConversion {
 
   template <typename executor_t>
   static return_t run(executor_t& ex, std::vector<data_t>& input_vec) {
+    std::cout << "HELLO1 vector" << input_vec[0] << std::endl;
     auto gpu_x_v = blas::make_sycl_iterator_buffer<scalar_t>(
         static_cast<int>(input_vec.size()));
     ex.get_policy_handler().copy_to_device(input_vec.data(), gpu_x_v,
@@ -135,6 +152,7 @@ struct MakeQuantizedBufferNoConversion {
 
   template <typename executor_t>
   static return_t run(executor_t& ex, data_t& input_scalar) {
+    std::cout << "HELLO1 scalar" << input_scalar << std::endl;
     auto gpu_x_v =
         blas::make_sycl_iterator_buffer<scalar_t>(static_cast<int>(1));
     ex.get_policy_handler().copy_to_device(&input_scalar, gpu_x_v, 1);
@@ -155,6 +173,14 @@ struct MakeQuantizedBuffer<float>
 template <>
 struct MakeQuantizedBuffer<double>
     : public MakeQuantizedBufferNoConversion<double> {};
+
+template <>
+struct MakeQuantizedBuffer<sycl_complex<float>>
+    : public MakeQuantizedBufferNoConversion<sycl_complex<float>> {};
+
+template <>
+struct MakeQuantizedBuffer<sycl_complex<double>>
+    : public MakeQuantizedBufferNoConversion<sycl_complex<double>> {};
 
 ////////////////////////////////////////////////////////////////////////////////
 // Testing: quantized_copy_to_host
@@ -180,7 +206,7 @@ struct QuantizedCopyToHost {
                                   std::vector<data_t>& output_vec) {
     auto data_gpu_x_v = blas::make_sycl_iterator_buffer<data_t>(
         static_cast<int>(output_vec.size()));
-    blas::_quantize(ex, device_buffer, data_gpu_x_v);
+//    blas::_quantize(ex, device_buffer, data_gpu_x_v); //FIXME
     return ex.get_policy_handler().copy_to_host(data_gpu_x_v, output_vec.data(),
                                                 output_vec.size());
   }
@@ -191,7 +217,7 @@ struct QuantizedCopyToHost {
                                   data_t& output_scalar) {
     auto data_gpu_x_v =
         blas::make_sycl_iterator_buffer<data_t>(static_cast<int>(1));
-    blas::_quantize(ex, device_buffer, data_gpu_x_v);
+//    blas::_quantize(ex, device_buffer, data_gpu_x_v); //FIXME
     return ex.get_policy_handler().copy_to_host(data_gpu_x_v, &output_scalar,
                                                 1);
   }
@@ -247,6 +273,8 @@ struct QuantizedCopyToHost<double>
 ////////////////////////////////////////////////////////////////////////////////
 // Exposed interface
 
+
+
 /**
  * @brief Constructs a buffer containing data that was quantized
  *        from the provided input vector
@@ -260,6 +288,7 @@ template <typename scalar_t, typename executor_t>
 auto make_quantized_buffer(executor_t& ex,
                            std::vector<data_storage_t<scalar_t>>& input_vec)
     -> decltype(internal::MakeQuantizedBuffer<scalar_t>::run(ex, input_vec)) {
+  std::cout << "I'm in make_quantized_buffer" << std::endl;
   return internal::MakeQuantizedBuffer<scalar_t>::run(ex, input_vec);
 }
 

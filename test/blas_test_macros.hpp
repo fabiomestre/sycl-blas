@@ -87,6 +87,23 @@
                                 combination_t, combination, name_generator)
 #endif  // BLAS_DATA_TYPE_HALF
 
+//TODO Add the ifdefs and compile options
+//#ifdef BLAS_DATA_TYPE_COMPLEX
+/** Registers test for the complex type
+ * @see BLAS_REGISTER_TEST_CUSTOM_NAME
+ */
+#define BLAS_REGISTER_TEST_COMPLEX(test_suite, class_name, test_function,     \
+                                  combination_t, combination, name_generator) \
+  class class_name##Complex                                                   \
+      : public ::testing::TestWithParam<combination_t<sycl_complex<float>>> {};            \
+  TEST_P(class_name##Complex, test) { test_function<sycl_complex<float>>(GetParam()); };   \
+  INSTANTIATE_TEST_SUITE_P(test_suite, class_name##Complex, combination,      \
+                           name_generator<sycl_complex<float>>);
+//#else
+//#define BLAS_REGISTER_TEST_COMPLEX(test_suite, class_name, test_function,     \
+//                                  combination_t, combination, name_generator)
+//#endif  // BLAS_DATA_TYPE_DOUBLE
+
 /** Registers test for all supported data types
  * @param test_suite Name of the test suite
  * @param class_name Base name of the test class
@@ -96,14 +113,23 @@
  * @param combination Combinations object
  * @param name_generator Function used to generate test names
  */
+//#define BLAS_REGISTER_TEST_CUSTOM_NAME(test_suite, class_name, test_function, \
+//                                       combination_t, combination,            \
+//                                       name_generator)                        \
+//  BLAS_REGISTER_TEST_FLOAT(test_suite, class_name, test_function,             \
+//                           combination_t, combination, name_generator);       \
+//  BLAS_REGISTER_TEST_DOUBLE(test_suite, class_name, test_function,            \
+//                            combination_t, combination, name_generator);      \
+//  BLAS_REGISTER_TEST_HALF(test_suite, class_name, test_function,              \
+//                          combination_t, combination, name_generator);        \
+//  BLAS_REGISTER_TEST_COMPLEX(test_suite, class_name, test_function,           \
+//                          combination_t, combination, name_generator);
+
+
 #define BLAS_REGISTER_TEST_CUSTOM_NAME(test_suite, class_name, test_function, \
                                        combination_t, combination,            \
                                        name_generator)                        \
-  BLAS_REGISTER_TEST_FLOAT(test_suite, class_name, test_function,             \
-                           combination_t, combination, name_generator);       \
-  BLAS_REGISTER_TEST_DOUBLE(test_suite, class_name, test_function,            \
-                            combination_t, combination, name_generator);      \
-  BLAS_REGISTER_TEST_HALF(test_suite, class_name, test_function,              \
+  BLAS_REGISTER_TEST_FLOAT(test_suite, class_name, test_function,           \
                           combination_t, combination, name_generator);
 
 /** Registers test for all supported data types

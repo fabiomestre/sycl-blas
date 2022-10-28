@@ -31,7 +31,7 @@ namespace blas {
 
 template <typename element_t>
 inline element_t *PolicyHandler<codeplay_policy>::allocate(
-    size_t num_elements) const {
+    int num_elements) const {
   return static_cast<element_t *>(vptr::SYCLmalloc(
       num_elements * sizeof(element_t), *pointerMapperPtr_));
 }
@@ -136,7 +136,7 @@ inline std::ptrdiff_t PolicyHandler<codeplay_policy>::get_offset(
 template <typename element_t>
 inline typename codeplay_policy::event_t
 PolicyHandler<codeplay_policy>::copy_to_device(const element_t *src,
-                                               element_t *dst, size_t size) {
+                                               element_t *dst, int size) {
   return copy_to_device(src, get_buffer(dst), size);
 }
 
@@ -150,12 +150,33 @@ template <typename element_t>
 inline typename codeplay_policy::event_t
 PolicyHandler<codeplay_policy>::copy_to_device(
     const element_t *src, BufferIterator<element_t, codeplay_policy> dst,
-    size_t size) {
+    int size) {
+
+  q_.submit([&](cl::sycl::handler &cgh) {
+      cl::sycl::stream os(1024, 128, cgh);
+      auto acc =
+          blas::get_range_accessor<cl::sycl::access::mode::write>(dst, cgh, size);
+      cgh.single_task([=]() {
+        os << "DST Before copy to device: " << acc[0] << "\n";
+      });
+    }).wait();
+
+  std::cout << "Inside copy to device" << std::endl;
   auto event = q_.submit([&](cl::sycl::handler &cgh) {
     auto acc =
         blas::get_range_accessor<cl::sycl::access::mode::write>(dst, cgh, size);
     cgh.copy(src, acc);
   });
+
+
+  q_.submit([&](cl::sycl::handler &cgh) {
+      cl::sycl::stream os(1024, 128, cgh);
+      auto acc =
+          blas::get_range_accessor<cl::sycl::access::mode::write>(dst, cgh, size);
+      cgh.single_task([=]() {
+        os << "DST After copy to device: " << acc[0] << "\n";
+      });
+  }).wait();
   return {event};
 }
 
@@ -168,7 +189,7 @@ PolicyHandler<codeplay_policy>::copy_to_device(
 template <typename element_t>
 inline typename codeplay_policy::event_t
 PolicyHandler<codeplay_policy>::copy_to_host(element_t *src, element_t *dst,
-                                             size_t size) {
+                                             int size) {
   return copy_to_host(get_buffer(src), dst, size);
 }
 
@@ -182,7 +203,18 @@ template <typename element_t>
 inline typename codeplay_policy::event_t
 PolicyHandler<codeplay_policy>::copy_to_host(
     BufferIterator<element_t, codeplay_policy> src, element_t *dst,
-    size_t size) {
+    int size) {
+  std::cout << "Copying to host" << std::endl;
+
+  q_.submit([&](cl::sycl::handler &cgh) {
+      cl::sycl::stream os(1024, 128, cgh);
+      auto acc =
+          blas::get_range_accessor<cl::sycl::access::mode::read>(src, cgh, size);
+      cgh.single_task([=]() {
+        os << "Device After operations are finished: " << acc[0] << "\n";
+      });
+    }).wait();
+
   auto event = q_.submit([&](cl::sycl::handler &cgh) {
     auto acc =
         blas::get_range_accessor<cl::sycl::access::mode::read>(src, cgh, size);
@@ -193,7 +225,7 @@ PolicyHandler<codeplay_policy>::copy_to_host(
 
 template <typename element_t>
 inline typename codeplay_policy::event_t PolicyHandler<codeplay_policy>::fill(
-    BufferIterator<element_t, codeplay_policy> buff, element_t value, size_t size) {
+    BufferIterator<element_t, codeplay_policy> buff, element_t value, int size) {
   auto event = q_.submit([&](cl::sycl::handler &cgh) {
     auto acc = blas::get_range_accessor<cl::sycl::access::mode::write>(
         buff, cgh, size);
@@ -201,6 +233,43 @@ inline typename codeplay_policy::event_t PolicyHandler<codeplay_policy>::fill(
   });
   return {event};
 }
+
+///* FIXME this should be defined in sycl_policy_handler.cpp but it's not being picked up by the linker when defined there. Why? */
+template typename codeplay_policy::event_t
+PolicyHandler<codeplay_policy>::copy_to_host<sycl::_V1::ext::oneapi::experimental::complex<float>>(
+    BufferIterator<sycl::_V1::ext::oneapi::experimental::complex<float>, codeplay_policy> src, sycl::_V1::ext::oneapi::experimental::complex<float> * dst,
+    int size);
+
+template BufferIterator<sycl::_V1::ext::oneapi::experimental::complex<float>, codeplay_policy>
+PolicyHandler<codeplay_policy>::get_buffer<sycl::_V1::ext::oneapi::experimental::complex<float>>(
+    BufferIterator<sycl::_V1::ext::oneapi::experimental::complex<float>, codeplay_policy> buff) const;
+
+template typename codeplay_policy::event_t
+PolicyHandler<codeplay_policy>::copy_to_device<sycl::_V1::ext::oneapi::experimental::complex<float>>(
+    const sycl::_V1::ext::oneapi::experimental::complex<float> *src, BufferIterator<sycl::_V1::ext::oneapi::experimental::complex<float>, codeplay_policy> dst,
+    int size);
+
+template BufferIterator<sycl::_V1::ext::oneapi::experimental::complex<float>, codeplay_policy>
+PolicyHandler<codeplay_policy>::get_buffer<sycl::_V1::ext::oneapi::experimental::complex<float>>(sycl::_V1::ext::oneapi::experimental::complex<float> * ptr)
+    const;
+
+template typename codeplay_policy::event_t
+PolicyHandler<codeplay_policy>::copy_to_host<float>(
+    BufferIterator<float, codeplay_policy> src, float * dst,
+    int size);
+
+template BufferIterator<float, codeplay_policy>
+PolicyHandler<codeplay_policy>::get_buffer<float>(
+    BufferIterator<float, codeplay_policy> buff) const;
+
+template typename codeplay_policy::event_t
+PolicyHandler<codeplay_policy>::copy_to_device<float>(
+    const float *src, BufferIterator<float, codeplay_policy> dst,
+    int size);
+
+template BufferIterator<float, codeplay_policy>
+PolicyHandler<codeplay_policy>::get_buffer<float>(float * ptr)
+    const;
 
 }  // namespace blas
 #endif  // QUEUE_SYCL_HPP
