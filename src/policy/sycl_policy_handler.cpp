@@ -87,6 +87,8 @@ INSTANTIATE_TEMPLATE_METHODS(double)
 INSTANTIATE_TEMPLATE_METHODS(cl::sycl::half)
 #endif  // BLAS_DATA_TYPE_HALF
 
+INSTANTIATE_TEMPLATE_METHODS(cl::sycl::ext::oneapi::experimental::complex<float>)
+
 #define INSTANTIATE_TEMPLATE_METHODS_SPECIAL(ind, val)                        \
   template IndexValueTuple<ind, val>                                          \
       *PolicyHandler<codeplay_policy>::allocate<IndexValueTuple<ind, val>>(   \

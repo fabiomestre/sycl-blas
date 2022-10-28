@@ -90,8 +90,8 @@ struct DetectScalar<cl::sycl::half> {
  * @brief See Detect Scalar.
  */
 template <>
-struct DetectScalar<std::complex<float>> {
-  using element_t = std::complex<float>;
+struct DetectScalar<cl::sycl::ext::oneapi::experimental::complex<float>> {
+  using element_t = cl::sycl::ext::oneapi::experimental::complex<float>;
   static element_t get_scalar(element_t &scalar) { return scalar; }
 };
 
@@ -99,8 +99,8 @@ struct DetectScalar<std::complex<float>> {
  * @brief See Detect Scalar.
  */
 template <>
-struct DetectScalar<std::complex<double>> {
-  using element_t = std::complex<double>;
+struct DetectScalar<cl::sycl::ext::oneapi::experimental::complex<double>> {
+  using element_t = cl::sycl::ext::oneapi::experimental::complex<double>;
   static element_t get_scalar(element_t &scalar) { return scalar; }
 };
 

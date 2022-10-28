@@ -39,8 +39,9 @@ void run_test(const combination_t<scalar_t> combi) {
   using data_t = utils::data_storage_t<scalar_t>;
 
   // Input vector
-  std::vector<data_t> x_v(size * incX);
-  fill_random(x_v);
+//  std::vector<data_t> x_v(size * incX); //FIXME
+//  fill_random(x_v); //FIXME
+  std::vector<data_t> x_v{data_t{1.0}};
 
   // Output vector
   std::vector<data_t> y_v(size * incY, 10.0);
@@ -76,10 +77,15 @@ const auto combi =
                        ::testing::Values(1, 3)                    // incY
     );
 #else
-const auto combi = ::testing::Combine(::testing::Values(11, 1002),  // size
-                                      ::testing::Values(0.0, 1.5),  // alpha
-                                      ::testing::Values(1, 4),      // incX
-                                      ::testing::Values(1, 3)       // incY
+//const auto combi = ::testing::Combine(::testing::Values(11, 1002),  // size
+//                                      ::testing::Values(0.0, 1.5),  // alpha
+//                                      ::testing::Values(1, 4),      // incX
+//                                      ::testing::Values(1, 3)       // incY
+//);
+const auto combi = ::testing::Combine(::testing::Values(1),      // size
+                                      ::testing::Values(1),      // alpha
+                                      ::testing::Values(1),      // incX
+                                      ::testing::Values(1)       // incY
 );
 #endif
 

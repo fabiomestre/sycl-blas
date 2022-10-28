@@ -31,17 +31,17 @@ include_directories(${SYCLBLAS_TEST} ${BLAS_INCLUDE_DIRS})
 set(SYCL_UNITTEST_SRCS
   # Blas 1 tests
   ${SYCLBLAS_UNITTEST}/blas1/blas1_axpy_test.cpp
-  ${SYCLBLAS_UNITTEST}/blas1/blas1_scal_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas1/blas1_scal_test.cpp
   # Blas 2 tests
-  ${SYCLBLAS_UNITTEST}/blas2/blas2_gemv_test.cpp
-  ${SYCLBLAS_UNITTEST}/blas2/blas2_ger_test.cpp
-  ${SYCLBLAS_UNITTEST}/blas2/blas2_syr_test.cpp
-  ${SYCLBLAS_UNITTEST}/blas2/blas2_syr2_test.cpp
-  ${SYCLBLAS_UNITTEST}/blas2/blas2_symv_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas2/blas2_gemv_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas2/blas2_ger_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas2/blas2_syr_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas2/blas2_syr2_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas2/blas2_symv_test.cpp
   # Blas 3 tests
-  ${SYCLBLAS_UNITTEST}/blas3/blas3_gemm_test.cpp
-  ${SYCLBLAS_UNITTEST}/blas3/blas3_gemm_batched_test.cpp
-  ${SYCLBLAS_UNITTEST}/blas3/blas3_trsm_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas3/blas3_gemm_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas3/blas3_gemm_batched_test.cpp
+#  ${SYCLBLAS_UNITTEST}/blas3/blas3_trsm_test.cpp
 )
 
 # Temporary disabling the following tests fro Intel DPC++ as currently Intel compiler crashes while running the following tests

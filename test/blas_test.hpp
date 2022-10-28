@@ -257,6 +257,13 @@ struct dump_arg_helper<cl::sycl::half> {
   }
 };
 
+template <>
+struct dump_arg_helper<cl::sycl::ext::oneapi::experimental::complex<float>> {
+inline void operator()(std::ostream &ss, cl::sycl::ext::oneapi::experimental::complex<float> f) {
+    dump_arg_helper<float>{}(ss, f.real()); // FIXME Do a proper handling of complex test names
+}
+};
+
 /**
  * @brief Dump an argument to a stream.
  *

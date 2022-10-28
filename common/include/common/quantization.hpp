@@ -54,6 +54,11 @@ struct DataStorage<double> {
   using type = double;
 };
 
+template <>
+    struct DataStorage<cl::sycl::ext::oneapi::experimental::complex<float>> {
+    using type = cl::sycl::ext::oneapi::experimental::complex<float>;
+};
+
 }  // namespace internal
 
 /**
@@ -156,6 +161,14 @@ template <>
 struct MakeQuantizedBuffer<double>
     : public MakeQuantizedBufferNoConversion<double> {};
 
+template <>
+struct MakeQuantizedBuffer<cl::sycl::ext::oneapi::experimental::complex<float>>
+        : public MakeQuantizedBufferNoConversion<cl::sycl::ext::oneapi::experimental::complex<float>> {};
+
+template <>
+struct MakeQuantizedBuffer<cl::sycl::ext::oneapi::experimental::complex<double>>
+        : public MakeQuantizedBufferNoConversion<cl::sycl::ext::oneapi::experimental::complex<double>> {};
+
 ////////////////////////////////////////////////////////////////////////////////
 // Testing: quantized_copy_to_host
 
@@ -241,6 +254,14 @@ struct QuantizedCopyToHost<float>
 template <>
 struct QuantizedCopyToHost<double>
     : public QuantizedCopyToHostNoConversion<double> {};
+
+template <>
+struct QuantizedCopyToHost<cl::sycl::ext::oneapi::experimental::complex<float>>
+        : public QuantizedCopyToHostNoConversion<cl::sycl::ext::oneapi::experimental::complex<float>> {};
+
+template <>
+struct QuantizedCopyToHost<cl::sycl::ext::oneapi::experimental::complex<double>>
+        : public QuantizedCopyToHostNoConversion<cl::sycl::ext::oneapi::experimental::complex<double>> {};
 
 }  // namespace internal
 

@@ -87,6 +87,15 @@
                                 combination_t, combination, name_generator)
 #endif  // BLAS_DATA_TYPE_HALF
 
+//TODO Add the ifdefs and compile options
+#define BLAS_REGISTER_TEST_COMPLEX(test_suite, class_name, test_function,                                                   \
+                                  combination_t, combination, name_generator)                                               \
+  class class_name##Complex                                                                                                 \
+      : public ::testing::TestWithParam<combination_t<cl::sycl::ext::oneapi::experimental::complex<float>>> {};             \
+  TEST_P(class_name##Complex, test) { test_function<cl::sycl::ext::oneapi::experimental::complex<float>>(GetParam()); };    \
+  INSTANTIATE_TEST_SUITE_P(test_suite, class_name##Complex, combination,                                                    \
+                           name_generator<cl::sycl::ext::oneapi::experimental::complex<float>>);
+
 /** Registers test for all supported data types
  * @param test_suite Name of the test suite
  * @param class_name Base name of the test class
@@ -104,6 +113,8 @@
   BLAS_REGISTER_TEST_DOUBLE(test_suite, class_name, test_function,            \
                             combination_t, combination, name_generator);      \
   BLAS_REGISTER_TEST_HALF(test_suite, class_name, test_function,              \
+                          combination_t, combination, name_generator);        \
+  BLAS_REGISTER_TEST_COMPLEX(test_suite, class_name, test_function,           \
                           combination_t, combination, name_generator);
 
 /** Registers test for all supported data types

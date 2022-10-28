@@ -51,9 +51,21 @@ class numeric_limits<cl::sycl::half> {
 
 namespace utils {
 
+/*TODO Add support for complex<double>*/
+template<typename scalar_t>
+struct ReturnType {typedef scalar_t type; };
+
+template<>
+struct ReturnType<cl::sycl::ext::oneapi::experimental::complex<float>> {typedef float type; };
+
 template <typename scalar_t>
 bool isnan(scalar_t value) noexcept {
   return std::isnan(value);
+}
+
+template <typename scalar_t>
+bool isnan( cl::sycl::ext::oneapi::experimental::complex<scalar_t> value) noexcept {
+    return std::isnan(abs(value));
 }
 
 template <typename scalar_t>
@@ -62,8 +74,18 @@ bool isinf(scalar_t value) noexcept {
 }
 
 template <typename scalar_t>
-scalar_t abs(scalar_t value) noexcept {
-  return std::abs(value);
+bool isinf( cl::sycl::ext::oneapi::experimental::complex<scalar_t> value) noexcept {
+    return std::isinf(abs(value));
+}
+
+template <typename scalar_t, typename ret_type = typename ReturnType<scalar_t>::type>
+ret_type abs(scalar_t value) noexcept {
+    if constexpr (std::is_same_v<scalar_t, cl::sycl::ext::oneapi::experimental::complex<float>>) {
+        return abs(value);
+    }
+    else {
+        return std::abs(value);
+    }
 }
 
 #ifdef BLAS_DATA_TYPE_HALF
@@ -97,11 +119,13 @@ scalar_t clamp_to_limits(scalar_t v) {
   }
 }
 
+
+
 /**
  * Indicates the tolerated margin for relative differences
  */
-template <typename scalar_t>
-inline scalar_t getRelativeErrorMargin() {
+template <typename scalar_t, typename ret_type = typename ReturnType<scalar_t>::type>
+inline ret_type getRelativeErrorMargin() {
   /* Measured empirically with gemm. The dimensions of the matrices (even k)
    * don't seem to have an impact on the observed relative differences
    * In the cases where the relative error is relevant (non close to zero),
@@ -120,6 +144,11 @@ inline double getRelativeErrorMargin<double>() {
   return 0.0000000001;  // 10^-10
 }
 
+template <>
+inline float getRelativeErrorMargin<cl::sycl::ext::oneapi::experimental::complex<float>>() {
+    return static_cast<float>(0.005);
+}
+
 #ifdef BLAS_DATA_TYPE_HALF
 
 template <>
@@ -132,8 +161,8 @@ inline cl::sycl::half getRelativeErrorMargin<cl::sycl::half>() {
  * Indicates the tolerated margin for absolute differences (used in case the
  * scalars are close to 0)
  */
-template <typename scalar_t>
-inline scalar_t getAbsoluteErrorMargin() {
+template <typename scalar_t, typename ret_type = typename ReturnType<scalar_t>::type>
+inline ret_type getAbsoluteErrorMargin() {
   /* Measured empirically with gemm.
    * In the cases where the relative error is irrelevant (close to zero),
    * absolute differences of up to 0.0006 were observed for float
@@ -148,6 +177,11 @@ inline double getAbsoluteErrorMargin<double>() {
    * absolute differences of up to 10^-12 were observed for double
    */
   return 0.0000000001;  // 10^-10
+}
+
+template <>
+inline float getAbsoluteErrorMargin<cl::sycl::ext::oneapi::experimental::complex<float>>() {
+    return 0.001f;
 }
 #ifdef BLAS_DATA_TYPE_HALF
 
@@ -173,7 +207,7 @@ inline bool almost_equal(scalar_t const& scalar1, scalar_t const& scalar2) {
     return true;
   }
 
-  const scalar_t absolute_diff = utils::abs(scalar1 - scalar2);
+  const auto absolute_diff = utils::abs(scalar1 - scalar2);
 
   // Close to zero, the relative error doesn't work, use absolute error
   if (scalar1 == scalar_t{0} || scalar2 == scalar_t{0} ||

@@ -212,6 +212,8 @@ struct AddOperator : public Operators {
   template <typename lhs_t, typename rhs_t>
   static SYCL_BLAS_INLINE typename StripASP<rhs_t>::type eval(const lhs_t &l,
                                                               const rhs_t &r) {
+
+    sycl::ext::oneapi::experimental::printf("AddOperator %f %f\n", l, r);
     return (l + r);
   }
 
@@ -231,6 +233,8 @@ struct ProductOperator : public Operators {
   template <typename lhs_t, typename rhs_t>
   static SYCL_BLAS_INLINE typename StripASP<rhs_t>::type eval(const lhs_t &l,
                                                               const rhs_t &r) {
+
+    sycl::ext::oneapi::experimental::printf("ProductOperator %f %f\n", l, r);
     return (l * r);
   }
 

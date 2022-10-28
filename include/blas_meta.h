@@ -29,6 +29,12 @@
 #include <type_traits>
 #include <utility>
 
+//FIXME Add define to CMakeLists instead
+#ifndef SYCL_EXT_ONEAPI_COMPLEX
+#define SYCL_EXT_ONEAPI_COMPLEX 1
+#endif
+#include <sycl/ext/oneapi/experimental/sycl_complex.hpp>
+
 namespace blas {
 
 /**
