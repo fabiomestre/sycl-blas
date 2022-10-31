@@ -47,11 +47,11 @@
  */
 #define BLAS_REGISTER_TEST_FLOAT(test_suite, class_name, test_function,      \
                                  combination_t, combination, name_generator) \
-  class class_name##Float                                                    \
-      : public ::testing::TestWithParam<combination_t<float>> {};            \
-  TEST_P(class_name##Float, test) { test_function<float>(GetParam()); };     \
-  INSTANTIATE_TEST_SUITE_P(test_suite, class_name##Float, combination,       \
-                           name_generator<float>);
+//  class class_name##Float                                                    \
+//      : public ::testing::TestWithParam<combination_t<float>> {};            \
+//  TEST_P(class_name##Float, test) { test_function<float>(GetParam()); };     \
+//  INSTANTIATE_TEST_SUITE_P(test_suite, class_name##Float, combination,       \
+//                           name_generator<float>);
 
 #ifdef BLAS_DATA_TYPE_DOUBLE
 /** Registers test for the double type

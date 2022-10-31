@@ -24,7 +24,7 @@
 # *
 # **************************************************************************/
 
-set(BLAS_DATA_TYPES "float" CACHE STRING "Data types to test")
+#set(BLAS_DATA_TYPES "float" CACHE STRING "Data types to test") //FIXME
 set(BLAS_INDEX_TYPES "int" CACHE STRING "Supported index/increment types")
 
 # Check to see if we've enabled double support in tests
@@ -37,9 +37,9 @@ if(DOUBLE_SUPPORT)
   endif()
 endif()
 
-if(NOT ("float" IN_LIST BLAS_DATA_TYPES))
-  message(FATAL_ERROR "float must be specified in BLAS_DATA_TYPES")
-endif()
+#if(NOT ("float" IN_LIST BLAS_DATA_TYPES)) //FIXME
+#  message(FATAL_ERROR "float must be specified in BLAS_DATA_TYPES")
+#endif()
 
 if("double" IN_LIST BLAS_DATA_TYPES)
   add_definitions(-DBLAS_DATA_TYPE_DOUBLE)

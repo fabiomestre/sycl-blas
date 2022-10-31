@@ -234,8 +234,18 @@ struct ProductOperator : public Operators {
   static SYCL_BLAS_INLINE typename StripASP<rhs_t>::type eval(const lhs_t &l,
                                                               const rhs_t &r) {
 
-    sycl::ext::oneapi::experimental::printf("ProductOperator %f %f\n", l, r);
-    return (l * r);
+    sycl::ext::oneapi::experimental::printf("ProductOperator %f %f %f %f\n", l.real(), l.imag(), r.real(), r.imag());
+
+    auto resSycl = l * r;
+    sycl::ext::oneapi::experimental::printf("Multiplication Print Sycl Complex %f %f\n", resSycl.real(), resSycl.imag());
+    std::complex<float> l2 = {l.real(), l.imag()};
+    std::complex<float> r2 = {r.real(), r.imag()};
+    auto resStd = l2 * r2;
+    sycl::ext::oneapi::experimental::printf("Multiplication Print Sycl Complex %f %f\n", resStd.real(), resStd.imag());
+
+    return cl::sycl::ext::oneapi::experimental::complex<float>{std::complex{l.real(), l.imag()} * std::complex{r.real(), r.imag()}};
+//    return (cl::sycl::ext::oneapi::experimental::complex<float>{3.0f} * r);
+//    return (l * r);
   }
 
   template <typename rhs_t>

@@ -59,8 +59,9 @@ typename executor_t::policy_t::event_t _axpy(
     increment_t _incx, container_1_t _vy, increment_t _incy) {
   auto vx = make_vector_view(ex, _vx, _incx, _N);
   auto vy = make_vector_view(ex, _vy, _incy, _N);
-
+  std::cout << "Alpha: " << _alpha << std::endl;
   auto scalOp = make_op<ScalarOp, ProductOperator>(_alpha, vx);
+
   auto addOp = make_op<BinaryOp, AddOperator>(vy, scalOp);
   auto assignOp = make_op<Assign>(vy, addOp);
   auto ret = ex.execute(assignOp);

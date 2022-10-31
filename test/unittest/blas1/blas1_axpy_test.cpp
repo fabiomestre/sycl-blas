@@ -30,6 +30,7 @@ using combination_t = std::tuple<int, scalar_t, int, int>;
 
 template <typename scalar_t>
 void run_test(const combination_t<scalar_t> combi) {
+
   index_t size;
   scalar_t alpha;
   index_t incX;
@@ -41,7 +42,7 @@ void run_test(const combination_t<scalar_t> combi) {
   // Input vector
 //  std::vector<data_t> x_v(size * incX); //FIXME
 //  fill_random(x_v); //FIXME
-  std::vector<data_t> x_v{data_t{1.0}};
+  std::vector<data_t> x_v{data_t{5.0, 1.0}};
 
   // Output vector
   std::vector<data_t> y_v(size * incY, 10.0);
@@ -83,7 +84,7 @@ const auto combi =
 //                                      ::testing::Values(1, 3)       // incY
 //);
 const auto combi = ::testing::Combine(::testing::Values(1),      // size
-                                      ::testing::Values(1),      // alpha
+                                      ::testing::Values(3),      // alpha
                                       ::testing::Values(1),      // incX
                                       ::testing::Values(1)       // incY
 );

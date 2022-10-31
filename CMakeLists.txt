@@ -86,6 +86,7 @@ option(GEMM_VECTORIZATION_SUPPORT "Whether to enable vectorization in Gemm kerne
 
 add_definitions(-DCL_TARGET_OPENCL_VERSION=220)
 add_definitions(-Wno-deprecated -O0 -fkeep-static-consts) #FIXME Remove this later.
+#add_definitions(-O0 -fkeep-static-consts) #FIXME Remove this later.
 
 set(CBLAS_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external/cblas/include)
 set(COMPUTECPP_SDK_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/external/computecpp-sdk/include)
